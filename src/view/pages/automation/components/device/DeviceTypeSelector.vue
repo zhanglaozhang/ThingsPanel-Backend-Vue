@@ -1,25 +1,26 @@
 <template>
   <div style="display: flex">
     <!-- 项目列表 -->
-    <el-select style="width: 100px;margin-right:10px" v-model="formData.projectId"
+    <el-select ref="projectRef" style="width: 100px;margin-right:10px" v-model="formData.projectId" placeholder="选择项目"
                @change="handleProjectChange">
       <el-option v-for="(option, index) in projectOptions" :key="index" :label="option.name" :value="option.id"></el-option>
     </el-select>
 
     <!-- 分组列表 -->
-    <el-select style="width: 100px;margin-right:10px" v-if="formData.projectId" v-model="formData.groupId"
+    <el-select ref="groupRef" style="width: 100px;margin-right:10px" v-if="formData.projectId" v-model="formData.groupId" placeholder="选择分组"
                @change="handleGroupChange">
       <el-option v-for="(option, index) in groupOptions" :key="index" :label="option.device_group" :value="option.id"></el-option>
     </el-select>
 
     <!-- 设备列表 -->
-    <el-select style="width: 100px;margin-right:10px" v-if="formData.groupId" v-model="formData.device"
+    <el-select ref="deviceRef" style="width: 100px;margin-right:10px" v-if="formData.groupId" v-model="formData.device" placeholder="选择设备"
                @change="handleDeviceChange">
       <el-option v-for="(option, index) in deviceOptions" :key="index" :label="option.label" :value="option"></el-option>
     </el-select>
 
     <!-- 状态/属性列表 -->
-    <el-select style="width: 100px;margin-right:10px" v-if="formData.device && formData.device.value" v-model="formData.state" value-key="name"
+    <el-select ref="stateRef" style="width: 100px;margin-right:10px" v-if="formData.device && formData.device.value" 
+               v-model="formData.state" value-key="name" placeholder="选择状态"
                @change="handleStateChange">
       <el-option-group v-for="group in stateOptions" :key="group.label" :label="group.label">
         <el-option v-for="item in group.options" :key="item.name" :label="item.label" :value="item"></el-option>
@@ -28,10 +29,10 @@
 
     <template v-if="formData.state">
       <!-- 在线持续时间 -->
-      <OnlineDuration v-if="formData.state.mode=='onlineDuration'" @change="handleDurationChange"/>
+      <OnlineDuration ref="onlineDurationRef" v-if="formData.state.mode=='onlineDuration'" :data="formData.state.duration" @change="handleDurationChange"/>
 
       <!-- 操作符 -->
-      <OperatorSelector v-else-if="formData.state.mode == 'property'"
+      <OperatorSelector ref="operatorSelectorRef" v-else-if="formData.state.mode == 'property'"
                         :data="formData.state" :option="option" @change="handleOperatorChange"/>
     </template>
 
@@ -45,6 +46,7 @@ import {getDeviceTree} from "@/api/device";
 import PluginAPI from "@/api/plugin";
 import OnlineDuration from "./OnlineDuration"
 import OperatorSelector from "./OperatorSelector";
+import { message_error } from '@/utils/helpers';
 export default {
   name: "DeviceTypeSelector",
   components: { OnlineDuration, OperatorSelector },
@@ -55,24 +57,19 @@ export default {
     option: {
       type: [Object],
       default: () => { return { operator: true } }
+    },
+    data: {
+      type: [Object],
+      default: () => {return {}}
     }
   },
   data() {
     return {
-      formData: {},
-      // 项目列表
-      projectOptions: [],
-      // 分组列表
-      groupOptions: [],
-      // 设备列表
-      deviceOptions: [],
-      // 状态/属性列表
-      stateOptions: [],
-      // 向父组件传的值
-      params: {
+      formData: {
         projectId: "",
         groupId: "",
         deviceId: "",
+        device: {},
         state: {
           duration: {},
           operator: {
@@ -80,7 +77,44 @@ export default {
             value: ""
           }
         }
-      }
+      },
+      // 项目列表
+      projectOptions: [],
+      // 分组列表
+      groupOptions: [],
+      // 设备列表
+      deviceOptions: [],
+      // 状态/属性列表
+      stateOptions: []
+    }
+  },
+  watch: {
+    data: {
+      handler(newValue) {
+        console.log("data", newValue)
+        if (newValue) {
+          this.formData = JSON.parse(JSON.stringify(newValue));
+          
+        }
+      },
+      immediate: true
+    },
+    "formData.projectId": {
+      handler(newValue) {
+        if (newValue) {
+          this.getGroupList(newValue);
+        }
+      },
+      immediate: true
+    },
+    "formData.groupId": {
+      handler(newValue) {
+        if (newValue) {
+          console.log("formData.groupId", newValue)
+          this.getDeviceList(newValue);
+        }
+      },
+      immediate: true
     }
   },
   created() {
@@ -93,7 +127,8 @@ export default {
      * @param v
      */
     handleProjectChange(v) {
-      this.params.projectId = v;
+      this.formData.projectId = v;
+      this.formData.groupId = "";
       this.updateData();
       this.getGroupList(v);
     },
@@ -102,7 +137,9 @@ export default {
      * @param v
      */
     handleGroupChange(v) {
-      this.params.groupId = v;
+      console.log("handleGroupChange", v)
+      this.formData.groupId = v;
+      this.formData.deviceId = "";
       this.updateData();
       this.getDeviceList(v);
     },
@@ -111,16 +148,16 @@ export default {
      * @param v
      */
     handleDeviceChange(v) {
-      this.params.deviceId = v.value;
-      this.getStateList(v.pluginId);
+      this.formData.deviceId = v.value;
       this.updateData();
+      this.getStateList(v.pluginId);
     },
     /**
      * 选择状态或属性
      * @param v
      */
     handleStateChange(v) {
-      this.params.state = v;
+      this.formData.state = v;
       this.updateData();
     },
     /**
@@ -128,7 +165,7 @@ export default {
      * @param {*} v 
      */
     handleDurationChange(v) {
-      this.params.state.duration = { value: v };
+      this.formData.state.duration = v;
       this.updateData();
     },
     /**
@@ -136,15 +173,15 @@ export default {
      * @param v
      */
     handleOperatorChange(v) {
-      this.params.state.operator = v;
+      this.formData.state.operator = v;
       this.updateData();
     },
     /**
      * 向父组件传值
      */
     updateData() {
-      this.$emit("update:data", this.params);
-      this.$emit("change", this.params);
+      console.log("updateData", this.formData);
+      this.$emit("change", this.formData);
     },
     /**
      * 获取项目列表
@@ -179,11 +216,18 @@ export default {
           .then(({data}) => {
             if (data.code == 200) {
               let arr = data.data?.data || [];
+
               this.deviceOptions = arr.map(item => {
                 return {
                   label: item.device_name, value: item.device, pluginId: item.type
                 }
               });
+              
+              if (this.formData.deviceId) {
+                this.formData.device = this.deviceOptions.find(item => item.value == this.formData.deviceId);
+                this.formData.device && this.getStateList(this.formData.device.pluginId);
+                this.updateData();
+              }
             }
           })
     },
@@ -193,25 +237,81 @@ export default {
      */
     getStateList(id) {
       this.stateOptions = [];
-      if (!id) return;
+      if (this.option.operator) {
+        this.stateOptions.push({
+          label: "在线状态", 
+          options: [
+            { mode: "onlineDuration", label: "持续时间", name: "onlineDuration" },
+          ]
+        });
+
+        this.stateOptions.push({
+          label: "上下线", 
+          options: [
+            { mode: "onlineState", label: "上线", name: "online" },
+            { mode: "onlineState", label: "下线", name: "offline" },
+            { mode: "onlineState", label: "上下线", name: "onAndOff" }
+          ]
+        });
+      }
+      if (!id) {
+        this.updateData();
+        return;
+      }
       let params = {current_page: 1, per_page: 9999, id };
       PluginAPI.page(params)
           .then(({data}) => {
             if (data.code == 200) {
-              const jsonStr = data.data?.data[0].chart_data || "{}";
+              const jsonStr = data.data?.data[0]?.chart_data || "{}";
               let jsonObj = JSON.parse(jsonStr);
+
               // 物模型属性
               let properties = jsonObj.tsl?.properties || [];
+
               let arr = properties.map(item => {
-                return { label: item.title, name: item.name, unit: item.unit, mode: "property" };
+                if (this.formData.state && this.formData.state.name === item.name) {
+                  this.formData.state = { ...this.formData.state, unit: item.unit, type: item.type }
+                }
+                return { label: item.title, name: item.name, unit: item.unit, mode: "property", type: item.dataType };
               });
-            
-              if (this.option.operator) {
-                this.stateOptions.push({label: "状态", options: [{ mode: "onlineDuration", label: "在线状态", name: "onlineDuration" }]});
-              }
+
+              
               this.stateOptions.push({label: "属性", options: arr});
+              this.updateData();
+              
             }
           })
+    },
+    /**
+     * @description: 验证
+     * @return {*}
+     */    
+    validate() {
+      const refs = this.$refs;
+      const form = this.formData;
+      if (!form.projectId || form.projectId === "") {
+        refs.projectRef.focus();
+        message_error("请选择项目");
+        return false;
+      }
+      if (!form.groupId || form.groupId === "") {
+        refs.groupRef.focus();
+        message_error("请选择分组");
+        return false;
+      }
+      if (!form.deviceId || form.deviceId === "") {
+        refs.deviceRef.focus();
+        message_error("请选择设备");
+        return false;
+      }
+      if (!form.state || form.state === "") {
+        refs.stateRef.focus();
+        message_error("请选择状态或属性");
+        return false;
+      }
+      if (refs.onlineDurationRef && !refs.onlineDurationRef.validate()) return false;
+      if (refs.operatorSelectorRef && !refs.operatorSelectorRef.validate()) return false;
+      return true;
     }
   }
 }
