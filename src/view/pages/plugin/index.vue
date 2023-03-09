@@ -76,7 +76,7 @@ export default {
 
 <style lang="scss" scoped>
 .system-box {
-  color: #fff;
+  // color: #fff;
 
   p {
     margin: 0;

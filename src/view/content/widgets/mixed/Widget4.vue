@@ -3,9 +3,9 @@
     <div class="col-md-6">
       <div class="panel-bg-blue px-6 py-4 rounded">
         <div class="text-muted">{{ $t("HOME.TITLE21") }}</div>
-        <div class="chart_height text-white title-num">
+        <div class="chart_height text-black title-num">
           <!-- cpu占用曲线-->
-          <curve-chart :value="cpuCurveData" key="cpu" :title="cpuTitle"></curve-chart>
+          <curve-chart style="color:black" :value="cpuCurveData" key="cpu" :title="cpuTitle"></curve-chart>
 
         </div>
       </div>
@@ -13,7 +13,7 @@
     <div class="col-md-6">
       <div class="panel-bg-blue px-6 py-4 rounded">
         <div class="text-muted">{{ $t("HOME.TITLE22") }}</div>
-        <div class="chart_height text-white title-num">
+        <div class="chart_height text-black title-num">
           <!-- 内存占用曲线-->
           <curve-chart :value="ramCurveData" key="ram" :title="ramTitle"></curve-chart>
         </div>
@@ -23,7 +23,7 @@
 </template>
 <style scoped>
 .panel-bg-blue {
-  background: #2d3d88;
+  background: #fff;
 }
 
 .title-num {

@@ -257,8 +257,8 @@
   树形控件
  */
 .el-dark-tree {
-  background: #273775 !important;
-  color: #6271fa !important;
+  background: #20222a !important;
+  color: #fff !important;
 }
 
 .el-dark-tree .el-tree-node__content {
@@ -342,12 +342,8 @@
   margin: 0;
 }
 
-.el-dark-dialog .el-dialog {
-  background-color: #2d3d88;
-}
-
 .el-dark-dialog .el-dialog .el-dialog__close, .el-dark-dialog .el-dialog .el-dialog__title, .el-dark-dialog .el-dialog .el-table thead, .el-dark-dialog .el-dialog .label-name {
-  color: #a8c5ff;
+  color: #000;
 }
 
 .el-dark-dialog .el-dialog .el-dialog__body {
@@ -388,12 +384,12 @@
 }
 
 .el-dark-collapse .el-collapse-item__header {
-  background-color: #202c62 !important;
+  background-color: #20222a !important;
   color: #fff;
-  border-bottom: 1px solid #233067;
+  border-bottom: 1px solid #20222a;
 }
 
 .el-dark-collapse .el-collapse-item__wrap {
-  background-color: #202c62 !important;
+  background-color: #20222a !important;
   border-bottom: unset;
 }

@@ -29,7 +29,7 @@
 
             <!--begin::Text-->
             <div class="timeline-content text-dark-50 d-flex">
-              <span class="text-white"
+              <span class="text-black"
                 v-html="item.describe"
               ></span>
             </div>

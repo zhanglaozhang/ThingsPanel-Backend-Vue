@@ -507,5 +507,7 @@ export default defineComponent({
 ::v-deep .el-table__indent {
   padding-left: 4px!important;
 }
-
+.el-table-transparent >>>.el-button--text{
+  color: #000 !important;
+}
 </style>

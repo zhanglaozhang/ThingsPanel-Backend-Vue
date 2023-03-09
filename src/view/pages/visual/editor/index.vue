@@ -238,12 +238,12 @@ const washData = (options) => {
 .editor-container {
   width: 100%;
   height: 100%;
-  background-color: #202c62!important;
+  background-color: rgb(32, 34, 42) !important;
 }
 .editor-header {
   height: 60px;
   width: 100%;
-  border: 3px solid #293b79;
+  border: 3px solid rgb(32, 34, 42);
   box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04)
 }
 .editor-content {
@@ -260,15 +260,15 @@ const washData = (options) => {
     margin-left: 300px;
     margin-right: 250px;
     height: calc(100% - 10px);
-    background-color: #171d46;
-    border: 1px solid #293b79;
+    background-color: rgb(32, 34, 42);
+    border: 1px solid rgb(32, 34, 42);
   }
   // 右侧information
   .editor-right {
     float: right;
     width: 250px;
     height: calc(100% - 10px);
-    background-color: #202c62;
+    background-color: rgb(32, 34, 42);
   }
 }
 .editor-content::after {

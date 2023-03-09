@@ -20,13 +20,13 @@
                 <div class="float-right">
                   <a
                     href="#"
-                    class="text-white font-weight-bold font-size-h1 d-block mb-7"
+                    class="text-black font-weight-bold font-size-h1 d-block mb-7"
                   >
                     {{business}}
                   </a>
                   <a
                     href="#"
-                    class="text-white font-weight-bold font-size-h6 mt-2"
+                    class="text-black font-weight-bold font-size-h6 mt-2"
                   >
                     {{ $t("COMMON.BUSINESS") }}
                   </a>
@@ -43,13 +43,13 @@
                 <div class="float-right">
                   <a
                     href="#"
-                    class="text-white font-weight-bold font-size-h1 d-block mb-7"
+                    class="text-black font-weight-bold font-size-h1 d-block mb-7"
                   >
                     {{conditions}}
                   </a>
                   <a
                     href="#"
-                    class="text-white font-weight-bold font-size-h6 mt-2"
+                    class="text-black font-weight-bold font-size-h6 mt-2"
                   >
                     {{ $t("COMMON.STRATEGY") }}
                   </a>
@@ -66,13 +66,13 @@
                 <div class="float-right">
                   <a
                     href="#"
-                    class="text-white font-weight-bold font-size-h1 d-block mb-7"
+                    class="text-black font-weight-bold font-size-h1 d-block mb-7"
                   >
                     {{dashboard}}
                   </a>
                   <a
                     href="#"
-                    class="text-white font-weight-bold font-size-h6 mt-2"
+                    class="text-black font-weight-bold font-size-h6 mt-2"
                   >
                     {{ $t("COMMON.VISUALIZATION") }}
                   </a>

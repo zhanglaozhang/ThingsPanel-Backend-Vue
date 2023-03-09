@@ -34,12 +34,12 @@
             >
               <el-form-item :label="$t('SYSTEM_MANAGEMENT.SYSTEM_SETTING.SYSTEMTITLE')">
                 <el-input
-                  style="width: 328px"
+                  style="width: 328px;"
                   v-model="formObj.system_name"
                   :placeholder="$t('SYSTEM_MANAGEMENT.SYSTEM_SETTING.PLACEHOLDER1')"
                 ></el-input>
               </el-form-item>
-              <el-form-item :label="$t('SYSTEM_MANAGEMENT.SYSTEM_SETTING.THEMECOLOR')">
+              <el-form-item  :label="$t('SYSTEM_MANAGEMENT.SYSTEM_SETTING.THEMECOLOR')">
                 <el-select
                   v-model="formObj.theme"
                   :placeholder="$t('SYSTEM_MANAGEMENT.SYSTEM_SETTING.PLACEHOLDER2')"
@@ -270,7 +270,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .system-box {
-  color: #fff;
+  // color: #fff;
   p {
     margin: 0;
   }

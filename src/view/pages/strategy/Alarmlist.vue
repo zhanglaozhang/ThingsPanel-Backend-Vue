@@ -4,11 +4,11 @@
     <v-data-table
       :headers="headers"
       :items="desserts"
-      class="no-bg text-white"
+      class="no-bg text-black"
       hide-default-footer
     >
       <template v-slot:top>
-        <v-toolbar flat color="" class="no-bg text-white">
+        <v-toolbar flat color="" class="no-bg text-black">
           <v-toolbar-title class="font-size-h3 font-weight-bolder">{{
             $t("COMMON.ALARMSTRATEGYLIST")
           }}</v-toolbar-title>
@@ -32,7 +32,7 @@
             >
               <v-card class="card">
                 <v-card-title>
-                  <h5 class="headline text-white">
+                  <h5 class="headline text-black">
                     {{ $t("COMMON.NEWALARMSTRATEGY") }}
                   </h5>
                 </v-card-title>
@@ -206,7 +206,7 @@
                           ></v-text-field>
                         </v-col>
                         <v-col cols="12" xs="6" md="1">
-                          <span class="text-white">{{ i.unit }}</span>
+                          <span class="text-black">{{ i.unit }}</span>
                         </v-col>
                         <v-col cols="12" xs="6" md="2">
                           <v-btn
@@ -230,7 +230,7 @@
                           label=""
                           auto-grow
                           :value="$t('COMMON.PLACEHOLDER11')"
-                          class="mt-4 text-white"
+                          class="mt-4 text-black"
                           v-model="message"
                           :rules="[messageRules]"
                           required
@@ -415,16 +415,16 @@ export default {
     headers: [
       {
         text: "序号",
-        class: "text-white",
+        class: "text-black",
         align: "start",
         sortable: false,
         value: "no",
       },
-      { text: "规则名称", class: "text-white", value: "name" },
-      { text: "规则说明", class: "text-white", value: "describe" },
+      { text: "规则名称", class: "text-black", value: "name" },
+      { text: "规则说明", class: "text-black", value: "describe" },
       {
         text: "策略操作",
-        class: "text-white",
+        class: "text-black",
         align: "right",
         value: "actions",
         sortable: false,

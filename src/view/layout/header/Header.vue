@@ -6,9 +6,23 @@
     class="header"
     v-bind:class="headerClasses"
   >
-    <div class="container-fluid d-flex align-items-center justify-content-between" style="padding: 0">
+    <div
+      class="container-fluid d-flex align-items-center justify-content-between"
+      style="padding: 0; background: rgb(32, 34, 42)"
+    >
+      <div style="width: 84%">
+
+        <el-badge :value="0" class="item" style="float:right;" >
+          <i style="font-size: 2rem;line-height: 36px;margin-left:50%" class="el-icon-bell"></i>
+        </el-badge>
+        <i class="iconfont icon-rizhi" style="font-size: 2rem;float:right;"></i>
+      </div>
+
       <!-- begin:: Header Menu -->
-      <div class="header-menu-wrapper header-menu-wrapper-left" ref="kt_header_menu_wrapper">
+      <div
+        class="header-menu-wrapper header-menu-wrapper-left"
+        ref="kt_header_menu_wrapper"
+      >
         <!-- <div
           v-if="headerMenuEnabled"
           id="kt_header_menu"
@@ -19,6 +33,7 @@
           <KTMenu></KTMenu>
         </div> -->
       </div>
+      <div></div>
       <!-- end:: Header Menu -->
       <KTTopbar></KTTopbar>
     </div>
@@ -89,7 +104,14 @@ export default {
 
 <style scoped>
 .header {
-  background: unset!important;
+  background: unset !important;
   margin-bottom: 30px;
+}
+ >>>.el-badge__content.is-fixed {
+    position: absolute;
+    top: 5px;
+    right: 0px;
+    -webkit-transform: translateY(-50%) translateX(100%);
+    transform: translateY(-50%) translateX(100%);
 }
 </style>

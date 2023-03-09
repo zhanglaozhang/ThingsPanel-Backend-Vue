@@ -16,7 +16,7 @@
           <div class="table-responsive">
             <table class="table">
               <thead>
-                <tr class="text-white">
+                <tr class="text-black">
                   <th>{{ $t("COMMON.NO") }}</th>
                   <th>{{ $t("COMMON.ASSETS") }}</th>
                   <th>{{ $t("COMMON.EQUIPMENT") }}</th>
@@ -33,7 +33,7 @@
                 </tr>
               </thead>
               <tbody v-for="(list, index) in lists" v-bind:key="'1-' + list.id">
-                <tr class="text-white">
+                <tr class="text-black">
                   <td>{{ index + 1 }}</td>
                   <td colspan="7">
                     <v-text-field
@@ -48,7 +48,7 @@
                     <i
                       class="
                         fa fa-plus-circle
-                        text-white
+                        text-black
                         mr-2
                         pointer
                         font-size-20
@@ -58,7 +58,7 @@
                     <i
                       class="
                         fa fa-minus-circle
-                        text-white
+                        text-black
                         mr-2
                         pointer
                         font-size-20
@@ -67,7 +67,7 @@
                     ></i>
                   </td>
                 </tr>
-                <tr class="text-white" v-for="(a, b) in list.device" :key="b">
+                <tr class="text-black" v-for="(a, b) in list.device" :key="b">
                   <td></td>
                   <td>
                     <v-text-field
@@ -126,7 +126,7 @@
                     <i
                       class="
                         fa fa-plus-circle
-                        text-white
+                        text-black
                         mr-2
                         pointer
                         font-size-20
@@ -136,7 +136,7 @@
                     <i
                       class="
                         fa fa-minus-circle
-                        text-white
+                        text-black
                         mr-2
                         pointer
                         font-size-20
@@ -146,7 +146,7 @@
                   </td>
                 </tr>
                 <template v-for="(item, i) in list.two">
-                  <tr class="text-white">
+                  <tr class="text-black">
                     <td>{{ index + 1 }}-{{ i + 1 }}</td>
                     <td colspan="7">
                       <v-text-field
@@ -162,7 +162,7 @@
                       <i
                         class="
                           fa fa-plus-circle
-                          text-white
+                          text-black
                           mr-2
                           pointer
                           font-size-20
@@ -172,7 +172,7 @@
                       <i
                         class="
                           fa fa-minus-circle
-                          text-white
+                          text-black
                           mr-2
                           pointer
                           font-size-20
@@ -181,7 +181,7 @@
                       ></i>
                     </td>
                   </tr>
-                  <tr class="text-white" v-for="(c, d) in item.device">
+                  <tr class="text-black" v-for="(c, d) in item.device">
                     <td></td>
                     <td>
                       <v-text-field
@@ -233,7 +233,7 @@
                       <i
                         class="
                           fa fa-plus-circle
-                          text-white
+                          text-black
                           mr-2
                           pointer
                           font-size-20
@@ -243,7 +243,7 @@
                       <i
                         class="
                           fa fa-minus-circle
-                          text-white
+                          text-black
                           mr-2
                           pointer
                           font-size-20
@@ -254,7 +254,7 @@
                     </td>
                   </tr>
                   <template v-for="(v, m) in item.there">
-                    <tr class="text-white">
+                    <tr class="text-black">
                       <td>{{ index + 1 }}-{{ i + 1 }}-{{ m + 1 }}</td>
                       <td colspan="7">
                         <v-text-field
@@ -270,7 +270,7 @@
                         <i
                           class="
                             fa fa-minus-circle
-                            text-white
+                            text-black
                             mr-2
                             pointer
                             font-size-20
@@ -279,7 +279,7 @@
                         ></i>
                       </td>
                     </tr>
-                    <tr class="text-white" v-for="(e, f) in v.device" :key="f">
+                    <tr class="text-black" v-for="(e, f) in v.device" :key="f">
                       <td></td>
                       <td>
                         <v-text-field
@@ -330,7 +330,7 @@
                         <i
                           class="
                             fa fa-plus-circle
-                            text-white
+                            text-black
                             mr-2
                             pointer
                             font-size-20
@@ -340,7 +340,7 @@
                         <i
                           class="
                             fa fa-minus-circle
-                            text-white
+                            text-black
                             mr-2
                             pointer
                             font-size-20
@@ -367,7 +367,7 @@
         <v-dialog v-model="dialog" max-width="500">
           <v-card class="card">
             <v-card-title>
-              <h5 class="headline text-white">
+              <h5 class="headline text-black">
                 {{ equname }} {{ $t("COMMON.CODEMANAGE") }}
               </h5>
             </v-card-title>
@@ -380,7 +380,7 @@
                 ></v-text-field>
                 <v-row class="p-4">
                   <v-col cols="12" class="col-px-0">
-                    <div class="text-white">{{ $t("COMMON.AGREEMENT") }}：</div>
+                    <div class="text-black">{{ $t("COMMON.AGREEMENT") }}：</div>
                     <el-select
                       v-model="protocol"
                       @change="changeAgreement(protocol)"
@@ -396,7 +396,7 @@
                     </el-select>
                   </v-col>
                   <v-col cols="12" class="col-px-0">
-                    <div class="text-white">默认配置：</div>
+                    <div class="text-black">默认配置：</div>
                     <div
                       class="defmsg"
                       style="
@@ -405,16 +405,16 @@
                         background: rgba(0, 0, 0, 0.3) !important;
                       "
                     >
-                      <div class="text-white">端口：{{ port }}</div>
-                      <div class="text-white">发布主题：{{ publish }}</div>
-                      <div class="text-white">订阅主题：{{ subscribe }}</div>
-                      <div class="text-white">用户名：{{ username }}</div>
-                      <div class="text-white">密码：{{ password }}</div>
+                      <div class="text-black">端口：{{ port }}</div>
+                      <div class="text-black">发布主题：{{ publish }}</div>
+                      <div class="text-black">订阅主题：{{ subscribe }}</div>
+                      <div class="text-black">用户名：{{ username }}</div>
+                      <div class="text-black">密码：{{ password }}</div>
                     </div>
                   </v-col>
 
                   <v-col cols="12" class="col-px-0">
-                    <div class="text-white">
+                    <div class="text-black">
                       {{ $t("COMMON.INTERFACETYPE") }}：
                     </div>
                     <v-text-field
@@ -423,10 +423,10 @@
                     ></v-text-field>
                   </v-col>
                   <v-col cols="12" class="col-px-0">
-                    <div class="text-white">{{ $t("COMMON.TOKEN") }}：</div>
+                    <div class="text-black">{{ $t("COMMON.TOKEN") }}：</div>
                     <v-text-field label="token" v-model="token"></v-text-field>
                   </v-col>
-                  <div class="text-white">
+                  <div class="text-black">
                     提示：{{ $t("COMMON.PLACEHOLDER33") }}
                   </div>
                 </v-row>
@@ -452,7 +452,7 @@
         <v-dialog v-model="datadialog" max-width="800">
           <v-card class="card">
             <v-card-title>
-              <h5 class="headline text-white">
+              <h5 class="headline text-black">
                 {{ dataname }} {{ $t("COMMON.DATAMANAGE") }}
               </h5>
             </v-card-title>
@@ -460,7 +460,7 @@
               <v-container>
                 <table class="table">
                   <thead>
-                    <tr class="text-white">
+                    <tr class="text-black">
                       <th>{{ $t("COMMON.FIELDNAME1") }}</th>
                       <th>{{ $t("COMMON.ATTR1") }}</th>
                       <th>{{ $t("COMMON.OPERATION") }}</th>
@@ -532,7 +532,7 @@
         <v-dialog v-model="currentDervice.id" max-width="800">
           <v-card class="card">
             <v-card-title class="d-flex justify-space-between">
-              <h5 class="headline text-white">
+              <h5 class="headline text-black">
                 {{ currentDervice.name }} {{ $t("COMMON.DEVICEPROPERTIES")
                 }}{{ $t("COMMON.MANAGE") }}
               </h5>
@@ -546,7 +546,7 @@
               <v-container>
                 <table class="table">
                   <thead>
-                    <tr class="text-white">
+                    <tr class="text-black">
                       <th>{{ $t("COMMON.DEVICEPROPERTIES") }}</th>
                       <th>{{ $t("COMMON.DEVICEPROPERTIESVALUE") }}</th>
                     </tr>

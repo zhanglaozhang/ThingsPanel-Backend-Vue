@@ -136,6 +136,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
+
 .tab-label-left {
   position:relative;
   display: flex;
@@ -191,14 +192,14 @@ export default {
   width: 100%;
   height: calc(100% - 20px);
   padding: 10px;
-  background-color: #202c62;
+  background-color: rgb(32, 34, 42);
 
   .search-box {
     display: inline-flex;
     height: 50px;
     line-height: 50px;
     width: 100%;
-    background-color: #202c62;
+    background-color: rgb(32, 34, 42);
   }
   .component-list {
     width: 100%;
@@ -206,7 +207,7 @@ export default {
     margin-top: 20px;
     top: 50px;
     bottom: 0;
-    background-color: #202c62;
+    background-color: rgb(32, 34, 42);
     //overflow-y: auto;
     .component-chart-list {
       width: 100%;
@@ -219,7 +220,7 @@ export default {
         margin: 2px;
         //border: 1px dashed #ccc;
         border-radius: 14px;
-        background-color: #2d3d86;
+        background-color: rgb(32, 34, 42);
         p {
           position: absolute;
           color: #fff;

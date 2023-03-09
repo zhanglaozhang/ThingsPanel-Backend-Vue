@@ -4,7 +4,7 @@
     <el-dialog class="el-dark-dialog el-table-transparent" title="导入JSON" :visible.sync="optionData.importVisible" width="540px">
       <el-row >
         <div style="margin-bottom: 10px;display: flex;justify-content: space-between">
-          <span>在这里粘贴大屏的JSON文本</span>
+          <span style="color:black">在这里粘贴大屏的JSON文本</span>
           <el-upload class="upload-demo" action="#" :limit="1" >
             <el-button type="primary" class="el-button--indigo">选择文件</el-button>
           </el-upload>

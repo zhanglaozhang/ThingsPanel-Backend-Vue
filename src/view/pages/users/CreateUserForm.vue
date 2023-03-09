@@ -280,4 +280,7 @@ const check_mobile = (rule, value, callback) => {
   border: 1px solid;
   background-color: transparent;
 }
+::v-deep.el-checkbox .el-checkbox__label{
+ color:#000 !important;
+}
 </style>

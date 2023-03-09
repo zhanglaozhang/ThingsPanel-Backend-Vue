@@ -63,13 +63,13 @@
       >
         <v-card class="card">
           <v-card-title>
-            <span class="headline text-white">{{ dialogtitle }}</span>
+            <span class="headline text-black">{{ dialogtitle }}</span>
           </v-card-title>
           <v-card-text>
             <v-container>
               <v-row>
                 <v-text-field label="Id" v-show="false"></v-text-field>
-                <v-col cols="4" class="v-middle-80 text-white">
+                <v-col cols="4" class="v-middle-80 text-black">
                   {{ $t("COMMON.TEXT2") }}：
                 </v-col>
                 <v-col cols="8">

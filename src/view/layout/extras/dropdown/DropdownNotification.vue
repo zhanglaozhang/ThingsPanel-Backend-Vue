@@ -5,7 +5,7 @@
       :style="{ backgroundImage: `url(${backgroundImage})` }"
     >
       <h4 class="d-flex flex-center rounded-top">
-        <span class="text-white">User Notifications</span>
+        <span class="text-black">User Notifications</span>
         <span
           class="btn btn-text btn-success btn-sm font-weight-bold btn-font-md ml-2"
         >

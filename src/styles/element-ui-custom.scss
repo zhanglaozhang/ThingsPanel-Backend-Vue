@@ -281,9 +281,12 @@
 /**
   树形控件
  */
+//  .el-dark-input .el-input__inner{
+//   background: rgb(32, 34, 42) !important
+//  }
 .el-dark-tree {
-  background: #273775 !important;
-  color: rgb(98, 113, 250) !important;
+  background: rgb(32, 34, 42) !important;
+  color: #fff !important;
 
   .el-tree-node__content {
     padding-top: 20px;
@@ -397,10 +400,10 @@
 // 深色弹窗
 .el-dark-dialog {
   .el-dialog {
-    background-color: #2d3d88;
+    // background-color: #2d3d88;
 
     .el-dialog__close, .el-dialog__title, .el-table thead, .label-name {
-      color: #a8c5ff;
+      color: #000;
     }
 
     .el-dialog__body {
@@ -451,12 +454,12 @@
   border-top: unset!important;
   border-bottom: unset!important;
   .el-collapse-item__header {
-    background-color: #202c62!important;
+    background-color: rgb(32, 34, 42) !important;
     color: #fff;
-    border-bottom: 1px solid #233067;
+    border-bottom: 1px solid rgb(32, 34, 42);
   }
   .el-collapse-item__wrap {
-    background-color: #202c62!important;
+    background-color: rgb(32, 34, 42)!important;
     border-bottom: unset;
   }
 }

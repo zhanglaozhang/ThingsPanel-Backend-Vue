@@ -15,6 +15,7 @@
     <div
       class="aside-menu-wrapper flex-column-fluid"
       id="kt_aside_menu_wrapper"
+      style="background: rgb(32, 34, 42);"
     >
       <div ref="kt_aside_menu" id="kt_aside_menu" class="aside-menu my-4" data-menu-vertical="1"
         data-menu-dropdown-timeout="500" v-bind:class="asideMenuClass">

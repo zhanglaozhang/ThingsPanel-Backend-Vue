@@ -5,7 +5,7 @@
       :hide-default-header="hideheader"
       :items="desserts"
       sort-by="calories"
-      class="no-bg text-white"
+      class="no-bg text-black"
       hide-default-footer
     >
       <template v-slot:header="{ props: { headers } }">
@@ -13,7 +13,7 @@
           <tr>
             <th
               v-for="(header, h) in headers"
-              class="text-white"
+              class="text-black"
               :class="h == 3 ? 'text-center width-300' : ''"
             >
               {{ $t(header.text) }}
@@ -24,12 +24,12 @@
       <template v-slot:item.name="{ item }">
         <router-link
           :to="{ path: 'strlist', query: { id: item.id } }"
-          class="text-white"
+          class="text-black"
           >{{ item.name }}</router-link
         >
       </template>
       <template v-slot:top>
-        <v-toolbar flat color="" class="no-bg text-white">
+        <v-toolbar flat color="" class="no-bg text-black">
           <v-toolbar-title class="font-size-h3 font-weight-bolder">{{
             $t("COMMON.LIST")
           }}</v-toolbar-title>
@@ -114,16 +114,16 @@ export default {
     headers: [
       {
         text: "COMMON.NO",
-        class: "text-white",
+        class: "text-black",
         align: "start",
         sortable: false,
         value: "no",
       },
-      { text: "COMMON.NAMES", class: "text-white", value: "name" },
-      { text: "COMMON.TIMES", class: "text-white", value: "datetime" },
+      { text: "COMMON.NAMES", class: "text-black", value: "name" },
+      { text: "COMMON.TIMES", class: "text-black", value: "datetime" },
       {
         text: "COMMON.OPERATION",
-        class: "text-white",
+        class: "text-black",
         align: "right",
         value: "actions",
         sortable: false,

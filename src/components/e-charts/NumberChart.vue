@@ -119,7 +119,7 @@ const numberOption = {
           textStyle: {
             fontSize: 20
           },
-          color:'#fff'
+          color:'#000'
         }
       },
       symbol: 'media/bg/chart-img.png',

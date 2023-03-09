@@ -71,7 +71,7 @@ export default {
 
   // 导航图标
   .menu-icon {
-    background: rgba(91, 146, 255, 0.2) !important;
+    // background: rgba(91, 146, 255, 0.2) !important;
     color: #3699ff !important;
     padding: 0 5px;
   }
@@ -110,18 +110,20 @@ export default {
   .v-list-item--active {
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
-    background: linear-gradient(
-      to right,
-      rgba(41, 56, 125, 0.95) 0%,
-      transparent 100%
-    ) !important;
+    // background: linear-gradient(
+    //   to right,
+    //   rgba(41, 56, 125, 0.95) 0%,
+    //   transparent 100%
+    // ) !important;
     .v-list-item__title {
       color: #fff !important;
+      font-size: 14px !important;
     }
 
     .menu-icon {
-      background-color: #5b92ff !important;
+      // background-color: #5b92ff !important;
       color: #fff !important;
+      font-size: 14px !important;
     }
   }
 
@@ -129,11 +131,13 @@ export default {
   .v-list-group__header {
     background: none !important;
     .v-list-item__title {
-      color: #5b92ff !important;
+      color: rgb(163, 164, 167) !important;
+      font-size: 14px !important;
     }
     .menu-icon {
-      background: rgba(91, 146, 255, 0.2) !important;
-      color: #3699ff !important;
+      // background: rgba(91, 146, 255, 0.2) !important;
+      color: rgb(163, 164, 167) !important;
+      font-size: 14px !important;
     }
   }
 
@@ -143,10 +147,12 @@ export default {
     width: 24px;
     height: 24px;
     border-radius: 3px;
+    color: rgb(163, 164, 167) !important;
   }
   // 标题
   .v-list-item__title {
-    color: #5b92ff !important;
+    color:rgb(163, 164, 167) !important;
+    font-size: 14px !important;
   }
 }
 </style>
