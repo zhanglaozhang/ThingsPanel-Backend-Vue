@@ -1,5 +1,5 @@
 <template>
-<div class="rounded card p-4 el-table-transparent">
+<div class="rounded card p-4 ">
   <el-row type="flex" :gutter="20" class="pt-3 pb-3 px-3">
     <el-col :span="12">
       <TableTitle>{{ $t("DEVICE_ACCESS.DEVICE") }}</TableTitle>
@@ -52,7 +52,7 @@
   <!-- 筛选 end -->
 
   <!-- 表 start -->
-  <el-form class="inline-edit el-dark-input">
+  <el-form class="inline-edit">
   <el-table :data="tableData" v-loading="loading" default-expand-all row-key="id" fit style="width: 100%" :indent="30">
 
     <el-table-column :label="$t('DEVICE_MANAGEMENT.TYPE')" width="125px">
@@ -68,7 +68,7 @@
              :placeholder="$t('DEVICE_MANAGEMENT.PLACEHOLDER2')"
               size="medium"
               v-model="scope.row.name"
-              @change="handleSave(scope.row)"
+              @change="handleSave(scope.row, getDeviceIndex)"
           ></el-input>
         </el-form-item>
       </template>
@@ -83,7 +83,7 @@
               :disabled="scope.row.device_type == 3"
               :asset_id.sync="scope.row.asset_id"
               :options="deviceGroupOptions"
-              @change="handleSave(scope.row)"
+              @change="handleSave(scope.row, getDeviceIndex)"
           ></DeviceGroupSelector>
         </el-form-item>
       </template>
@@ -202,7 +202,7 @@
 
   <!-- 分组管理 start -->
   <el-dialog
-      class="el-dark-dialog el-dark-input"
+      class=""
       :visible.sync="showManagementGroup"
       :title="$t('DEVICE_MANAGEMENT.MANAGEMENT_GROUP_MODEL.MANAGINGDEVICEGROUPS')"
       width="30%"
