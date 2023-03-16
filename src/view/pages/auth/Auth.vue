@@ -1,7 +1,6 @@
 <template>
   <div
     class="d-flex flex-column flex-root"
-    :style="{backgroundImage: `url(${ getSystemLogo() }) !important`,backgroundRepeat: `repeat !important`}"
   >
     <div class="wrappers">
       <header class="headers">
@@ -9,18 +8,18 @@
         <nav class="container-fluid">
           <div class="row">
             <div class="col align-self-center">
-              <a href="" class="logo text-white">
+              <a href="" class="logo text-black">
                 <img :src="siteLogo()" alt="" class="logo-icon" />
               </a>
             </div>
-            <div class="col text-right align-self-center">
+            <!-- <div class="col text-right align-self-center">
               <a
                 href="http://thingspanel.io/"
                 class="btn btn-sm btn-primary text-uppercase"
                 target="_blank"
                 >help</a
               >
-            </div>
+            </div> -->
           </div>
         </nav>
       </header>
@@ -43,31 +42,31 @@
           <div class="row">
             <div class="col-12 col-md text-center text-md-left align-self-center">
               <p class="footer_copy">
-                {{ $t("LOGIN.TEXT1") }} <a href="http://thingspanel.io/" target="_blank">ThingsPanel</a>
+                <!-- {{ $t("LOGIN.TEXT1") }} <a href="http://thingspanel.io/" target="_blank">ThingsPanel</a> -->
               </p>
             </div>
             <div class="col-12 col-md-auto text-center text-md-right">
               <ul class="nav justify-content-center justify-md-content-end">
                 <li class="nav-item">
-                  <a
+                  <!-- <a
                     class="nav-link"
                     href="http://thingspanel.io/"
                     target="_blank"
                     >{{ $t("LOGIN.TEXT2") }}</a
-                  >
+                  > -->
                 </li>
                 <li class="nav-item">
-                  <a
+                  <!-- <a
                     class="nav-link"
                     href="http://thingspanel.io/"
                     target="_blank"
                     >{{ $t("LOGIN.TEXT3") }}</a
-                  >
+                  > -->
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="http://thingspanel.io/" target="_blank"
+                  <!-- <a class="nav-link" href="http://thingspanel.io/" target="_blank"
                     >{{ $t("LOGIN.TEXT4") }}</a
-                  >
+                  > -->
                 </li>
               </ul>
             </div>
@@ -75,17 +74,19 @@
         </div>
       </footer>
     </div>
+    <img src="" alt="" srcset="">
   </div>
 </template>
 
 <!-- Load login custom page styles -->
-<style lang="scss">
+<style lang="scss" scoped>
 @import "@/assets/sass/pages/login/login-1.scss";
 #kt_login {
   background: url("/media/bg/bg-5.jpg");
 }
 .d-flex {
   background-size: cover;
+  background: url('../../../assets/images/login/login-bj.png') no-repeat;
 }
 </style>
 <style scoped>
@@ -130,7 +131,7 @@
 }
 @media (min-width: 1904px) {
   .container {
-    max-width: 1785px !important;
+    max-width: 1151px !important;
   }
 }
 @media (max-width: 768px) {

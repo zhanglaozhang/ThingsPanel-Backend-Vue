@@ -11,8 +11,8 @@
       <!-- begin:: Aside Left -->
       <KTAside v-if="asideEnabled"></KTAside>
       <!-- end:: Aside Left -->
-      <div id="kt_wrapper" class="d-flex flex-column flex-row-fluid wrapper">
-        <div class="wrapbox">
+      <div id="kt_wrapper" class="d-flex flex-column flex-row-fluid wrapper" style="background: rgb(32, 34, 42);color: #000;">
+        <div class="wrapbox" style="#fff">
         <!-- begin:: Header -->
         <KTHeader></KTHeader>
         <!-- end:: Header -->

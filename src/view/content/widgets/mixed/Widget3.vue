@@ -7,22 +7,22 @@
 <template>
     <div class="row">
         <div class="col-md-3">
-            <div class="panel-bg-blue px-6 py-4 rounded">
+            <div class="panel-bg-blue px-6 py-4 rounded" >
                 <div class="text-muted">{{ $t("HOME.DEVICE_TOTAL") }}</div>
-                <div class="chart_height text-white title-num">
+                <div class="chart_height text-black title-num">
                     <!-- 设备总数 -->
-                  <div style="height: 80px;line-height: 80px;font-size: 20px" v-if="deviceTotal==0">0</div>
-                  <number-chart v-else :value="deviceTotal"></number-chart>
+                  <div  style="height: 80px;line-height: 80px;" v-if="deviceTotal==0">0</div>
+                  <number-chart ref="number"  v-else :value="deviceTotal"></number-chart>
                 </div>
             </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-3"> 
             <div class="panel-bg-blue px-6 py-4 rounded">
                 <div class="text-muted">{{ $t("HOME.MESSAGE_TOTAL") }}</div>
-                <div class="chart_height text-white title-num">
+                <div class="chart_height text-black title-num">
                     <!-- 消息总数 -->
                   <div style="height: 80px;line-height: 80px;font-size: 20px" v-if="messageTotal==0">0</div>
-                  <number-chart v-else color="#F85778" :value="messageTotal"></number-chart>
+                  <number-chart v-else  :value="messageTotal"></number-chart>
                 </div>
             </div>
         </div>
@@ -40,7 +40,7 @@
               <div class="text-muted">{{ $t("HOME.TITLE20") }}</div>
               <div class="chart_height">
                 <!-- 内存占用率 -->
-                <dashboard-chart color="#0493fa" :value="ramUsage" unit="%"></dashboard-chart>
+                <dashboard-chart  :value="ramUsage" unit="%"></dashboard-chart>
               </div>
             </div>
         </div>
@@ -109,6 +109,7 @@
         created() {
             this.ajaxdata();
             this.timer = setInterval(this.ajaxdata,10000);
+            console.log(this.$refs.number);
         },
         beforeDestroy() {
           clearInterval(this.timer);

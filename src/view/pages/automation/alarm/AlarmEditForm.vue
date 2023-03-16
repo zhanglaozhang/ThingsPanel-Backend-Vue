@@ -369,5 +369,7 @@ export default defineComponent({
 </script>
 
 <style scoped>
-
+.el-checkbox >>>.el-checkbox__label{
+  color: black;
+}
 </style>

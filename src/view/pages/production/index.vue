@@ -5,13 +5,13 @@
       :hide-default-header="hideheader"
       :items="desserts"
       sort-by="calories"
-      class="no-bg text-white"
+      class="no-bg text-black"
       hide-default-footer
     >
       <template v-slot:header="{ props: { headers } }">
         <thead>
           <tr>
-            <th v-for="(header, h) in headers" class="text-white" :key="h">
+            <th v-for="(header, h) in headers" class="text-black" :key="h">
               {{ $t(header.text) }}
             </th>
           </tr>
@@ -21,12 +21,12 @@
       <template v-slot:item.name="{ item }">
         <router-link
           :to="{ path: 'strlist', query: { id: item.id } }"
-          class="text-white"
+          class="text-black"
           >{{ item.name }}</router-link
         >
       </template>
       <template v-slot:top>
-        <v-toolbar flat color="" class="no-bg text-white">
+        <v-toolbar flat color="" class="no-bg text-black">
           <!-- 新增按钮 -->
           <v-toolbar-title class="font-size-h3 font-weight-bolder">{{
             $t("COMMON.PRODUCTION")
@@ -48,7 +48,7 @@
             >
               <v-card class="card">
                 <v-card-title>
-                  <h5 class="headline text-white">{{ $t("COMMON.PRODUCTION") }}</h5>
+                  <h5 class="headline text-black">{{ $t("COMMON.PRODUCTION") }}</h5>
                 </v-card-title>
                 <v-card-text>
                   <v-container>
@@ -173,12 +173,12 @@ export default {
     limit: 15,
     page: 1,
     headers: [
-      { text: "COMMON.pType", class: "text-white", value: "type" },
-      { text: "COMMON.pName", class: "text-white", value: "name" },
-      { text: "COMMON.pResult", class: "text-white", value: "value" },
-      { text: "COMMON.pTime", class: "text-white", value: "created_at" },
-      { text: "COMMON.pRemark", class: "text-white", value: "remark" },
-      { text: "操作", class: "text-white", value: "actions" },
+      { text: "COMMON.pType", class: "text-black", value: "type" },
+      { text: "COMMON.pName", class: "text-black", value: "name" },
+      { text: "COMMON.pResult", class: "text-black", value: "value" },
+      { text: "COMMON.pTime", class: "text-black", value: "created_at" },
+      { text: "COMMON.pRemark", class: "text-black", value: "remark" },
+      { text: "操作", class: "text-black", value: "actions" },
     ],
     desserts: [],
     entity_id: "",

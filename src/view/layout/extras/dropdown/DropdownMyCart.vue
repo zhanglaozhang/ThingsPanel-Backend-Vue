@@ -8,7 +8,7 @@
       <span class="btn btn-md btn-icon bg-white-o-15 mr-4">
         <i class="flaticon2-shopping-cart-1 text-success" />
       </span>
-      <h4 class="text-white m-0 flex-grow-1 mr-3">My Cart</h4>
+      <h4 class="text-black m-0 flex-grow-1 mr-3">My Cart</h4>
       <button type="button" class="btn btn-success btn-sm">2 Items</button>
     </div>
     <!--end::Header-->

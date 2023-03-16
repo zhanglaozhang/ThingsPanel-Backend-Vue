@@ -57,11 +57,9 @@ const router = new VueRouter({
     routes: baseRoutes
 })
 router.beforeEach((to, from, next) => {
-
     const token = JwtService.getToken()
     const token_expires_in = JwtService.getExpiresTime()
     const now = Date.now();
-
     if (to.name == 'login') {
         next();
     } else if (!token || !token_expires_in) {

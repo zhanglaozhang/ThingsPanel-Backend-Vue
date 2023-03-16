@@ -8,12 +8,17 @@
       <div class="login-form login-signin col-md-6">
         <div class="shadow-lg">
           <div class="card-body">
-            <h5 class="font-weight-light mb-1 text-mute-high">Welcome,</h5>
-            <h2 class="font-weight-normal mb-4">{{ $t("LOGIN.SIGNIN") }}</h2>
-            <p class="font-weight-semi-bold">
+            <!-- <h5 class="font-weight-light mb-1 text-mute-high">Welcome,</h5> -->
+            <!-- <h2 class="font-weight-normal mb-4">{{ $t("LOGIN.SIGNIN") }}</h2> -->
+            <!-- <p class="font-weight-semi-bold">
               {{ $t("LOGIN.TITLE1") }}
-            </p>
-
+            </p> -->
+            <div class="tb">
+              <img   src="../../../assets/images/login/wlwtb.png" alt="" srcset="">
+            </div>
+            <div class="tb2">
+              <img src="../../../assets/images/login/wlwzt.png" alt="" srcset="">
+            </div>
             <LoginForm></LoginForm>
 
           </div>
@@ -58,7 +63,7 @@
   flex-wrap: wrap;
   margin-right: -15px;
   margin-left: -15px;
-  margin-top: 15%;
+  margin-top: 5%;
   color: #fff !important;
   position: relative;
 
@@ -70,27 +75,38 @@
   max-width: 20%;
   background: unset;
   position: absolute;
-  right: 15%;
+  right: -2%;
   top: 3%;
 }
 .shadow-lg {
+  width: 510px;
+  height: 660px;
   position: relative;
   display: flex;
   flex-direction: column;
-  min-width: 0;
-  word-wrap: break-word;
-  background-color: #fff;
-  background-clip: border-box;
-  border-radius: 0.25rem;
-  backdrop-filter: saturate(125%) blur(10px);
-  background-color: rgba(168, 197, 255, 0.25);
-  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175) !important;
-  border: 0 !important;
+  // min-width: 0;
+  // word-wrap: break-word;
+  // background-color: #fff;
+  // background-clip: border-box;
+  // border-radius: 0.25rem;
+  // backdrop-filter: saturate(125%) blur(10px);
+  // background-color: rgba(168, 197, 255, 0.25);
+  // box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175) !important;
+  // border: 0 !important;
+  background: url('../../../assets/images/login/dlbj.png') no-repeat;
+}
+.tb{
+  text-align: center;
+  margin-bottom: 18px;
+}
+.tb2{
+  text-align: center;
+  margin-bottom: 51px;
 }
 .card-body {
   padding: 15px;
   padding-bottom: 3rem !important;
-  padding-top: 3rem !important;
+  padding-top: 49px !important;
   flex: 1 1 auto;
 }
 .font-weight-light {

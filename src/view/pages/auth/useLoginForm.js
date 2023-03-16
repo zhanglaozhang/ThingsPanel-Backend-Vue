@@ -6,6 +6,7 @@ import { LOGIN } from "@/core/services/store/auth.module";
 
 
 export default function useLoginForm() {
+
     // 等同于 this
     const self = getCurrentInstance().proxy
 
@@ -18,6 +19,7 @@ export default function useLoginForm() {
     // 请求状态
     let loading = ref(false);
 
+    const xzStatus = ref(1);
     // 表单数据
     let formData = reactive({
         email: "",
@@ -65,6 +67,7 @@ export default function useLoginForm() {
                     if (response.code !== 200) {
                         errors.email = self.$t("LOGIN.WrongPassword")
                     }
+                    
                 }).finally(() => {
                     // 速度太快，延迟 500 ms
                     setTimeout(()=>{
@@ -74,6 +77,7 @@ export default function useLoginForm() {
 
         })
     }
+    
 
     return {
         loginFormRef,
@@ -82,5 +86,6 @@ export default function useLoginForm() {
         rules,
         errors,
         handleSubmit,
+        xzStatus,
     }
 }

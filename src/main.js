@@ -1,6 +1,5 @@
 import 'normalize.css';
 import '@/styles/app.scss';
-
 import AMap from 'vue-amap';
 Vue.use(AMap);
 
@@ -46,7 +45,8 @@ import * as echarts from 'echarts';
 Vue.prototype.$echarts = echarts
 
 import ElementUI from "./core/plugins/element-ui";
-
+import element from 'element-ui';
+import './assets/css/iconfont.css'
 // mock data
 import '@/mock';
 
@@ -56,7 +56,7 @@ Vue.component('date-picker', VuePersianDatetimePicker);
 Vue.config.productionTip = false;
 
 Vue.use(ElementUI);
-
+Vue.use(element)
 // import tpIot from "tp-iot"
 import tpIot from "/packages/device_plugin"
 Vue.use(tpIot)
@@ -107,7 +107,6 @@ import "./core/plugins/highlight-js";
 import "./core/plugins/inline-svg";
 import "./core/plugins/metronic";
 import "@mdi/font/css/materialdesignicons.css";
-
 
 
 // API service init

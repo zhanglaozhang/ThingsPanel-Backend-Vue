@@ -249,7 +249,7 @@ const dashboardOption = {
     detail: {
       formatter: '{value}',
       textStyle: { // 其余属性默认使用全局文本样式，详见TEXTSTYLE
-        color: '#fff',
+        color: '#000',
         // fontWeight: 'bolder',
         "fontSize": 18
       },

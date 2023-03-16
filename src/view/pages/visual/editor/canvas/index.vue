@@ -408,7 +408,7 @@ export default {
 }
 .droppable {
   position: relative;
-  background-color: var(--color);
+  background-color: rgb(32, 34, 42);
   width: var(--w);
   height: var(--h);
   transform-origin: 0 0;

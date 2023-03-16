@@ -1,5 +1,7 @@
 <template>
+  
   <div class="topbar-item">
+
     <div class="card-user">
       <span
             class="text-blue font-weight-bold font-size-base d-none d-lg-block mr-1">
@@ -7,7 +9,7 @@
       </span>
     <span
             class=" text-white font-weight-bolder font-size-base d-none d-lg-block mr-3"
-    >
+    > 
         {{ user.name }}
       </span>
     </div>

@@ -3,11 +3,11 @@
     <v-data-table
       :headers="headers"
       :items="desserts"
-      class="no-bg text-white"
+      class="no-bg text-black"
       hide-default-footer
     >
       <template v-slot:top>
-        <v-toolbar flat color="" class="no-bg text-white">
+        <v-toolbar flat color="" class="no-bg text-black">
           <v-toolbar-title class="font-size-h3 font-weight-bolder">{{
             $t("COMMON.CONTROLSTRATRGYLIST")
           }}</v-toolbar-title>
@@ -37,7 +37,7 @@
             >
               <v-card class="card">
                 <v-card-title>
-                  <h5 class="headline text-white">
+                  <h5 class="headline text-black">
                     {{ $t("COMMON.ADDSTRATRGYLIST") }}
                   </h5>
                 </v-card-title>
@@ -185,7 +185,7 @@
                               :key="s.id"
                               :label="s.name"
                               :value="s.id"
-                              class="text-white"
+                              class="text-black"
                             ></v-radio>
                           </v-radio-group>
                         </v-col>
@@ -226,7 +226,7 @@
                           </div></v-col
                         >
                         <v-col cols="12" xs="6" md="1">
-                          <span class="text-white">{{ i.unit }}</span>
+                          <span class="text-black">{{ i.unit }}</span>
                         </v-col>
                         <v-col cols="12" xs="6" md="1">
                           <v-btn
@@ -364,7 +364,7 @@
                                 :key="s.id"
                                 :label="s.name"
                                 :value="s.id"
-                                class="text-white"
+                                class="text-black"
                               ></v-radio>
                             </v-radio-group>
                           </div>
@@ -400,7 +400,7 @@
                             :key="s.id"
                             :label="s.name"
                             :value="s.id"
-                            class="text-white"
+                            class="text-black"
                           ></v-radio>
                         </v-radio-group>
                       </v-col>
@@ -609,19 +609,19 @@ export default {
     headers: [
       {
         text: "序号",
-        class: "text-white",
+        class: "text-black",
         align: "start",
         sortable: false,
         value: "no",
       },
-      { text: "规则名称", class: "text-white", value: "name" },
-      { text: "规则说明", class: "text-white", value: "describe" },
-      { text: "策略类型", class: "text-white", value: "types" },
-      { text: "策略优先级", class: "text-white", value: "sort" },
-      { text: "策略状态", class: "text-white", value: "status" },
+      { text: "规则名称", class: "text-black", value: "name" },
+      { text: "规则说明", class: "text-black", value: "describe" },
+      { text: "策略类型", class: "text-black", value: "types" },
+      { text: "策略优先级", class: "text-black", value: "sort" },
+      { text: "策略状态", class: "text-black", value: "status" },
       {
         text: "策略操作",
-        class: "text-white",
+        class: "text-black",
         align: "right",
         value: "actions",
         sortable: false,
