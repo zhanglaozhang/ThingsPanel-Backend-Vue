@@ -2,7 +2,7 @@
 const CompressionPlugin = require("compression-webpack-plugin");
 
 module.exports = {
-    // publicPath: "",
+    // publicPath: "/iot/",
     productionSourceMap: false, // 生产打包时不输出map文件
     runtimeCompiler: true,
     devServer: {
