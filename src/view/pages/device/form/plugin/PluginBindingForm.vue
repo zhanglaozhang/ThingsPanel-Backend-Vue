@@ -216,12 +216,17 @@ export default defineComponent({
   }
 
   .plugin-binding-tree {
-    background-color:#2d3d88!important;
+    background-color:#fff!important;
+    color: #000 !important;
     height: 540px;
     .is-current .el-tree-node__content {
       //background-color: #cb1667 !important;
-      background-color: #1c2754 !important;
+      // background-color: #1c2754 !important;
     }
+  }
+  .el-dark-tree .el-tree-node__content:hover{
+    background-color: #fff !important;
+    color: #000 !important;
   }
 
   .el-alert {

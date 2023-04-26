@@ -66,9 +66,9 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style>
 .transpond-create{
-  //.el-form-item__label{
+  /* //.el-form-item__label{
   //  color: #fff;
   //}
   //.el-cascader{
@@ -76,6 +76,7 @@ export default {
   //}
   //.el-select{
   //  width: 100%;
-  //}
+  //} */
 }
+
 </style>

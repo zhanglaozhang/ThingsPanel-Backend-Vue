@@ -13,14 +13,14 @@
         <!-- 自动化名称-->
         <el-col :span="8">
           <el-form-item :label="$t('AUTOMATION.RULE_NAME')" required>
-            <el-input ref="nameRef" v-model="formData.automation_name"></el-input>
+            <el-input ref="nameRef" v-model="formData.automation_name" placeholder="请输入规则名称"></el-input>
           </el-form-item>
         </el-col>
 
         <!-- 描述-->
         <el-col :span="8">
           <el-form-item :label="$t('AUTOMATION.RULE_DESCRIBE')">
-            <el-input ref="describeRef" v-model="formData.automation_described"></el-input>
+            <el-input ref="describeRef" v-model="formData.automation_described" placeholder="请输入规则说明"></el-input>
           </el-form-item>
         </el-col>
 
@@ -29,7 +29,7 @@
           <el-form-item :label="$t('AUTOMATION.PRIORITY')">
             <el-input-number ref="priorityRef" :min="0" :max="100" v-model="formData.priority"></el-input-number>
             <el-tooltip class="item" effect="dark" :content="$t('AUTOMATION.TIP.PRIORITY')" placement="top-start">
-              <i class="el-icon-info" style="margin-left:10px;"></i>
+              <i class="el-icon-info"></i>
             </el-tooltip>
             
           </el-form-item>

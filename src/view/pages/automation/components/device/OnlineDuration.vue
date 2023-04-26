@@ -1,7 +1,7 @@
 <template>
-  <div style="display: flex">
+  <div style="display: flex;color:black">
     {{ $t('AUTOMATION.DURATION') }}
-    <el-input ref="durationRef" style="width: 100px;margin-left:10px;margin-right:10px" v-model="formData.value" @change="handleValueChange"></el-input>
+    <el-input ref="durationRef"  style="width: 100px;margin-left:10px;margin-right:10px;" v-model="formData.value" @change="handleValueChange"></el-input>
     {{ $t('AUTOMATION.SECONDS') }}
   </div>
 </template>
@@ -50,5 +50,7 @@ export default {
 </script>
 
 <style scoped>
-
+.el-input{
+  color: black !important;
+}
 </style>

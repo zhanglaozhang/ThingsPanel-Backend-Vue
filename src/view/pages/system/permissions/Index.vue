@@ -98,31 +98,31 @@
         </el-form-item>
 
         <el-form-item :label="$t('SYSTEM_MANAGEMENT.PERMISSION_MANAGEMENT.LABLENAME')" style="width: 100%">
-          <el-input size="medium" v-model="formData.name"></el-input>
+          <el-input size="medium" v-model="formData.name" placeholder="请输入名称"></el-input>
         </el-form-item>
 
         <el-form-item label="path：" style="width: 100%">
-          <el-input size="medium" v-model="formData.path"></el-input>
+          <el-input size="medium" v-model="formData.path" placeholder="请输入PATH"></el-input>
         </el-form-item>
 
         <el-form-item :label="$t('SYSTEM_MANAGEMENT.PERMISSION_MANAGEMENT.COMPONENTPATH')" style="width: 100%">
-          <el-input size="medium" v-model="formData.component"></el-input>
+          <el-input size="medium" v-model="formData.component" placeholder="请输入组件路径"></el-input>
         </el-form-item>
 
         <el-form-item :label="$t('SYSTEM_MANAGEMENT.PERMISSION_MANAGEMENT.LABLETITLE')" style="width: 100%">
-          <el-input size="medium" v-model="formData.title"></el-input>
+          <el-input size="medium" v-model="formData.title" placeholder="请输入标题"></el-input>
         </el-form-item>
 
         <el-form-item :label="$t('SYSTEM_MANAGEMENT.PERMISSION_MANAGEMENT.LABLEICON')" style="width: 100%">
-          <el-input size="medium" v-model="formData.icon"></el-input>
+          <el-input size="medium" v-model="formData.icon" placeholder="请输入图标"></el-input>
         </el-form-item>
 
         <el-form-item :label="$t('SYSTEM_MANAGEMENT.PERMISSION_MANAGEMENT.LABLETHESORTING')" style="width: 100%">
-          <el-input size="medium" v-model="formData.sort"></el-input>
+          <el-input size="medium" v-model="formData.sort" placeholder="请输入排序"></el-input>
         </el-form-item>
 
         <el-form-item :label="$t('SYSTEM_MANAGEMENT.PERMISSION_MANAGEMENT.CODE')" style="width: 100%">
-          <el-input size="medium" v-model="formData['function_code']"></el-input>
+          <el-input size="medium" v-model="formData['function_code']" placeholder="请输入编码"></el-input>
         </el-form-item>
 
         <el-form-item :label="$t('SYSTEM_MANAGEMENT.PERMISSION_MANAGEMENT.LABLETYPE')" style="width: 100%">
@@ -187,7 +187,6 @@ export default {
         })
     },
     getList() {
-      // console.log(11111,this.hasAuth('sys:permission:search'))
       if (this.hasAuth('sys:permission:search')) {
         Perm.list()
             .then(({data}) => {
@@ -246,6 +245,9 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style>
+  .el-dark-input .el-input__inner, .el-dark-input .el-textarea__inner{
+  background-color: #fff !important;
+  color: black !important;
+}
 </style>

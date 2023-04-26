@@ -103,7 +103,12 @@ export default {
   }
 }
 </script>
-
+<style>
+.el-dark-input .el-input__inner, .el-dark-input .el-textarea__inner{
+  background-color: #fff !important;
+  color: black !important;
+}
+</style>
 <style scoped lang="scss">
 .device-status-container {
   width: 100%;

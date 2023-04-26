@@ -144,8 +144,8 @@ span.text-blue.font-weight-bold.font-size-base.d-none.d-lg-block.mr-1 {
 }
 
 .el-form-item__content .el-input__inner{
-    color: #fff;
-    background-color: rgba(22, 30, 67, 0.5) !important;
+    color: #000;
+    background-color: #fff !important;
     border-color: rgba(0, 0, 0, 0.1) !important;
     height: 40px;
     line-height: 40px;
@@ -402,10 +402,10 @@ span.text-blue.font-weight-bold.font-size-base.d-none.d-lg-block.mr-1 {
 }
 
 .el-dialog__header, .el-dialog__body {
-    background-color: #2d3d88;
+    background-color: #fff;
 }
 .el-dialog__body .label-name {
-    color: #ffffff;
+    color: #000;
 }
 .el-dialog__title {
     color: #a8c5ff!important;

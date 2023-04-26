@@ -6,13 +6,13 @@
         <i :class="labelIcon"></i>{{ label }}
       </p>
     </div>
-    <el-dialog class="dark-dialog" :title="$t('PLUGIN.CHART_INFO_TAB.TEXT1')" width="700px" :visible.sync="dialogVisible" :append-to-body="true" :close-on-click-modal="false">
+    <el-dialog  :title="$t('PLUGIN.CHART_INFO_TAB.TEXT1')" width="700px" :visible.sync="dialogVisible" :append-to-body="true" :close-on-click-modal="false">
       <el-tabs v-model="tabsValue">
         <el-tab-pane style="height: 300px" :label="$t('PLUGIN.CHART_INFO_TAB.TAB_TITLE')" name="map">
           <div class="add-chart-map-container">
             <el-form :label-position="'left'" label-width="100px" style="margin: 20px">
               <el-form-item :label="$t('PLUGIN.CHART_INFO_TAB.TAB_TITLE3')">
-                <el-input v-model="mapData.name"></el-input>
+                <el-input v-model="mapData.name" placeholder="请输入名称"></el-input>
               </el-form-item>
               <el-form-item :label="$t('PLUGIN.CHART_INFO_TAB.TAB_TITLE4')">
                 <!-- 从json中解析出物模型的所有属性 -->
@@ -25,17 +25,17 @@
 
               <el-row :gutter="20" style="margin-bottom: 10px" v-for="(condition, index) in mapData.conditions" :key="index">
                 <el-col :span="7" style="display: inline-flex">
-                  <span style="width: 100px;text-align: center;margin-top:6px">{{ $t('PLUGIN.CHART_INFO_TAB.TAB_TITLE9') }}</span>
+                  <span style="width: 100px;text-align: center;margin-top:6px;color:black">{{ $t('PLUGIN.CHART_INFO_TAB.TAB_TITLE9') }}</span>
                   <el-select :placeholder="$t('PLUGIN.CHART_INFO_TAB.TAB_TITLE8')" v-model="condition.operator">
                     <el-option v-for="(operator, index) in operators" :key="index" :label="operator" :value="operator"></el-option>
                   </el-select>
                 </el-col>
                 <el-col :span="6" style="display: inline-flex">
-                  <span style="width: 80px;text-align: center;margin-top:6px">{{ $t('PLUGIN.CHART_INFO_TAB.TAB_TITLE10') }}</span>
+                  <span style="width: 80px;text-align: center;margin-top:6px;color:black">{{ $t('PLUGIN.CHART_INFO_TAB.TAB_TITLE10') }}</span>
                   <el-input v-model="condition.value"></el-input>
                 </el-col>
                 <el-col :span="8" style="display: inline-flex">
-                  <span style="width: 60px;text-align: center;margin-top:6px">{{ $t('PLUGIN.CHART_INFO_TAB.TAB_TITLE11') }}</span>
+                  <span style="width: 60px;text-align: center;margin-top:6px;color:black">{{ $t('PLUGIN.CHART_INFO_TAB.TAB_TITLE11') }}</span>
                   <el-input v-model="condition.label"></el-input>
                 </el-col>
                 <el-col :span="3" style="display: inline-flex">
@@ -209,7 +209,7 @@ const iconList = [
 ]
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 .status-container {
   width: 100%;
   height: 100%;
@@ -224,6 +224,7 @@ const iconList = [
 
   }
 }
+
 //::v-deep .el-form-item {
 //  width: 100%;
 //}

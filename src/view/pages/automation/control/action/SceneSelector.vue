@@ -7,7 +7,7 @@
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
 <template>
-  <div style="display: flex;">
+  <div style="display: flex;color:black">
     {{ $t('AUTOMATION.ACTIVATE') }}<span style="color:red;margin-left:6px">*</span>
     <el-select ref="sceneIdRef" style="width: 300px;margin-left: 10px;margin-right:10px" v-model="sceneId" @change="handleChange">
       <el-option v-for="(option, index) in options" :key="index" :label="option.scenario_name" :value="option.id"></el-option>

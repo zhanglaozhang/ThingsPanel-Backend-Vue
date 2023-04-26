@@ -4,7 +4,7 @@
       <el-row :gutter="40">
         <el-col :span="6" >
           <div class="tree-div" style="border-right: 4px solid #263373">
-            <el-tree v-if="showDialog" ref="tree" class="el-dark-tree plugin-binding-tree"  :default-expanded-keys="defaultExpandKeys"
+            <el-tree style="color:black" v-if="showDialog" ref="tree" class="el-dark-tree plugin-binding-tree"  :default-expanded-keys="defaultExpandKeys"
                      node-key="id"
                      :data="pluginTree" :props="{ children: 'device_model', label: 'model_name'}"
                      @node-click="nodeClick"></el-tree>
@@ -184,15 +184,21 @@ export default defineComponent({
       font-size: 14px;
     }
   }
-
   .plugin-binding-tree {
-    background-color:#2d3d88!important;
+    background-color:#fff!important;
     height: 540px;
     .is-current .el-tree-node__content {
       //background-color: #cb1667 !important;
-      background-color: #1c2754 !important;
+      background-color: #fff !important;
+      color: #000;
+
     }
   }
+
+.el-dark-tree .el-tree-node__content:active{
+color:#000;
+background-color: #fff;
+}
 
   .el-alert {
     border-radius: 0;

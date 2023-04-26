@@ -261,6 +261,9 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style>
+.el-dark-input .el-input__inner, .el-dark-input .el-textarea__inner{
+  background: #fff !important;
+  color: #000;
+}
 </style>

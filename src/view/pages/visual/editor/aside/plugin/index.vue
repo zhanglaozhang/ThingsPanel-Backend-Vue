@@ -18,7 +18,7 @@
           <vue-drag :option="component" :index="component.id">
 
             <!-- 仪表盘 -->
-            <dashboard-chart v-show="component.controlType == 'dashboard'"
+            <dashboard-chart  v-show="component.controlType == 'dashboard'"
                              :style="getChartStyle(component)"
                              :option="component"></dashboard-chart>
 
@@ -74,7 +74,7 @@ export default {
     return {
       activeNames: [""],
       componentList: [
-        {label: "仪表盘", value: "dashboard", children: []},
+        {label: "仪表盘", value: "dashboard", children: [],},
         {label: "曲线", value: "history", children: []},
         {label: "开关", value: "control", children: []},
         {label: "状态", value: "status", children: []},
@@ -158,6 +158,7 @@ export default {
     overflow-y: auto;
 
     .component-item {
+      color: #000;
       position: relative;
       width: 180px;
       height: 100%;
@@ -166,7 +167,7 @@ export default {
       //background-color: #2d3d86;
       .component-item-title {
         position: absolute;
-        color: #fff;
+        color: #000;
         text-align: center;
         width: 100%;
       }
@@ -225,7 +226,7 @@ export default {
 }
 
 .component-item-title {
-  color: #fff;
+  color: #000;
 
 }
 

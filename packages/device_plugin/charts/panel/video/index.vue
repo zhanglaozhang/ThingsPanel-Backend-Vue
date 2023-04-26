@@ -78,7 +78,6 @@ export default {
   justify-items: center;
   align-content: center;
   box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
-  background-color: #33459a !important;
   cursor:pointer;
   .video-item-header {
     height: 40px;

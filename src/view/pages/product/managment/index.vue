@@ -35,7 +35,6 @@
 
         <!-- 产品名称-->
         <el-table-column :label="$t('PRODUCT_MANAGEMENT.PRODUCT_LIST.PRODUCTNAME')" prop="name" align="left">
-
         </el-table-column>
 
         <!--  协议类型-->

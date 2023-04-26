@@ -196,11 +196,9 @@ export default {
 }
 
 ::v-deep .el-dialog__header {
-  background-color: #2d3d88!important;
 }
 
 ::v-deep  .el-dialog {
-  background-color: #2d3d88!important;
 
   .el-dialog__close,.el-dialog__title,.el-table thead,.label-name{
     color: #a8c5ff;

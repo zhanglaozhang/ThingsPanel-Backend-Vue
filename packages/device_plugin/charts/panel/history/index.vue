@@ -160,7 +160,9 @@ export default {
   }
 }
 </script>
+<style>
 
+</style>
 <style scoped>
 div {
   text-align: left;

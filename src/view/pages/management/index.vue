@@ -484,7 +484,7 @@ export default defineComponent({
 
 <style scope lang="scss">
 .el-input__inner {
-  color: aliceblue;
+  color: #000;
   background: #090944;
   height: 30px;
 }
@@ -493,9 +493,9 @@ export default defineComponent({
 }
 .home {
   .el-drawer {
-    color: #fff !important;
+    color: #000 !important;
     font-size: 14px;
-    background: #263d8b;
+    background: #fff;
     // outline: none;
     &__body {
       height: 100%;
@@ -515,10 +515,8 @@ export default defineComponent({
   padding: 0px 10px;
   border-radius:5px ;
   .el-tree {
-    background: #263d8b;
-    color: #5b92ff;
-   
-
+    background: #fff;
+    color: #000;
   }
 }
 .dividerLine {
@@ -532,11 +530,10 @@ export default defineComponent({
     border-radius: 5px;
 }
 .el-tree-node__content:hover{
-  background: #fff;
   border-radius: 5px !important;
 }
 .el-drawer__header{
-  color: #fff;
+  color: #000;
 }
 
 .el-tree-node__content {

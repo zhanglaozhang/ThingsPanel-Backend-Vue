@@ -91,7 +91,7 @@
     </el-table>
 
     <!-- 高级模式对话框-->
-    <el-dialog width="700px" :class="dark?'dark-dialog':''"
+    <el-dialog width="700px" 
         :title="addOrEdit=='add'?$t('PLUGIN.MATTER_MODEL_INFO_TAB.ADD'):$t('PLUGIN.MATTER_MODEL_INFO_TAB.EDIT')"
         :visible.sync="dialogVisible" :append-to-body="true"
         @closed="handleClose">
