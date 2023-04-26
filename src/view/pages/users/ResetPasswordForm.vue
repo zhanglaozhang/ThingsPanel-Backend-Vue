@@ -14,11 +14,11 @@
       :rules="rules"
       hide-required-asterisk>
     <el-form-item :label="$t('SYSTEM_MANAGEMENT.USER_MANAGEMENT.PASSWORD')" prop="password">
-      <el-input size="medium" v-model="formData.password" show-password></el-input>
+      <el-input size="medium" v-model="formData.password" show-password placeholder="请输入密码"></el-input>
     </el-form-item>
 
     <el-form-item :label="$t('SYSTEM_MANAGEMENT.USER_MANAGEMENT.CONPASSWORD')" prop="password_confirmation">
-      <el-input size="medium" v-model="formData.password_confirmation" show-password></el-input>
+      <el-input size="medium" v-model="formData.password_confirmation" show-password placeholder="请输入确认密码"></el-input>
     </el-form-item>
 
     <FormAlert :error_message="error_message"></FormAlert>

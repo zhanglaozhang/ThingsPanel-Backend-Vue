@@ -70,7 +70,7 @@ export default {
      */
     theme: {
       type: [String],
-      default: "dark"
+      default: "WHITE"
     },
     title: {
       type: [String],
@@ -198,7 +198,6 @@ export default {
   }
 }
 </script>
-
 <style scoped>
 ::v-deep .el-dialog__body {
   padding-top: 0;

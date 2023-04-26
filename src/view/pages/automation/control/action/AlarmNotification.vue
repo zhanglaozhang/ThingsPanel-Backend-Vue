@@ -18,15 +18,12 @@
         </el-form-item>
 
         <el-form-item :label="$t('AUTOMATION.NOTIFY_USER')">
-          <div style="display: flex;margin-bottom: 10px" v-for="(group, index) in formData.groups" :key="index">
-  
+          <div style="display: flex;margin-bottom: 10px;color: #000 !important;" v-for="(group, index) in formData.groups" :key="index">
             <el-select style="width: 100px;margin-right:10px" v-model="group.role" @change="handleRoleChange">
               <el-option v-for="(role, index) in roleList" :key="index" :label="role.role_name" :value="role.id"></el-option>
             </el-select>
-
             <el-select style="width: auto;margin-left: 10px;margin-right:10px" multiple v-model="group.users" @change="handleChange">
               <el-option :label="$t('AUTOMATION.ALL_USER')" :value="'all'"></el-option>
-
             </el-select>
 
   
@@ -48,8 +45,8 @@
         </el-form-item>
 
         <el-form-item :label="$t('AUTOMATION.NOTIFY_TYPE')" required>
-          <el-checkbox-group v-model="formData.notification" @change="handleChange">
-            <el-checkbox label="wechat">{{ $t('AUTOMATION.WECHAT') }}</el-checkbox>
+          <el-checkbox-group  v-model="formData.notification" @change="handleChange">
+            <el-checkbox  label="wechat">{{ $t('AUTOMATION.WECHAT') }}</el-checkbox>
             <el-checkbox label="sms">{{  $t('AUTOMATION.SMS') }}</el-checkbox>
             <el-checkbox label="email">{{  $t('AUTOMATION.EMAIL') }}</el-checkbox>
             <el-checkbox label="phone">{{ $t('AUTOMATION.PHONE')}}</el-checkbox>
@@ -167,5 +164,8 @@ import { message_error } from '@/utils/helpers'
   </script>
   
   <style scoped>
-  
+  >>>.el-checkbox .el-checkbox__label{
+    color: #000 ;
+  }
+
   </style>

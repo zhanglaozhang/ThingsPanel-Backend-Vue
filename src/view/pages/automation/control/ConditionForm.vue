@@ -1,7 +1,7 @@
 <template>
   <div>
       <el-form-item :label="$t('AUTOMATION.IF')">
-        <div style="display: flex;margin-bottom: 10px" v-for="(condition, index) in conditions" :key="index">
+        <div style="display: flex;margin-bottom: 10px;color:black" v-for="(condition, index) in conditions" :key="index">
 
           <el-select ref="relationRef" style="position: absolute; width: 60px;margin-right:10px" 
               v-if="condition.relation"
@@ -12,7 +12,7 @@
             <el-option :label="$t('AUTOMATION.OR')" :value="'or'"></el-option>
           </el-select>
 
-            <el-select ref="typeRef" style="width: 100px;margin-left: 70px;margin-right:10px" v-model="condition.type">
+            <el-select ref="typeRef" style="width: 120px;margin-left: 0px;margin-right:10px" v-model="condition.type">
               <!-- 设备条件-->
               <el-option :label="$t('AUTOMATION.DEVICE_CONDITION')" :value="'device'"></el-option>
               <!-- 时间条件-->

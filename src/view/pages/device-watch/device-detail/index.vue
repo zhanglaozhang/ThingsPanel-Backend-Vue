@@ -85,7 +85,18 @@ export default defineComponent({
   }
 })
 </script>
-
+<style>
+  .el-dark-tree .el-tree-node__content{
+    background: #fff !important;
+    color: black !important;
+  }
+  .el-dark-tree{
+    background: #fff !important;
+  }
+  .el-dark-tree .is-current .el-tree-node__content{
+    background: #fff !important;
+  }
+</style>
 <style scoped lang="scss">
 .device-watch-container {
   position: Inherit;
@@ -98,20 +109,19 @@ export default defineComponent({
     color:  #fff;
     height: 50px;
     padding-bottom: 10px;
-    background:rgb(32, 34, 42)
+    
   }
   .content {
     display: inline-flex;
     width: 100%;
     height: calc(100% - 60px);
-    background-color: rgb(32, 34, 42);
+
     .left-tree {
       position: Inherit;
       width: 300px;
       height: 100%;
-      border: 2px solid rgb(32, 34, 42);
       border-radius: 4px;
-      background-color: rgb(32, 34, 42);
+      background-color: #fff;
       overflow-y: auto;
       .search-input {
         //background-color: #5867dd!important;

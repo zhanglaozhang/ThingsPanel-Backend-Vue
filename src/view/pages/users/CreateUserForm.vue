@@ -17,14 +17,14 @@
 
       <el-row>
         <el-form-item :label="$t('SYSTEM_MANAGEMENT.USER_MANAGEMENT.NAME')" prop="name" style="width: 100%">
-          <el-input size="medium" v-model="formData.name"></el-input>
+          <el-input size="medium" v-model="formData.name" placeholder="请输入姓名"></el-input>
         </el-form-item>
       </el-row>
 
       <el-row>
         <el-col :span="24">
           <el-form-item :label="$t('SYSTEM_MANAGEMENT.USER_MANAGEMENT.ROLE')" prop="roles">
-            <div style="width: 100%">
+            <div style="width: 100%;color:black">
               <el-row :gutter="20">
                 <el-col :span="20">
                   <el-checkbox-group :class="isCollapsed ? 'cg-roles-name' : ''" v-model="formData.roles">
@@ -54,12 +54,12 @@
       <el-row>
         <el-col :span="12">
           <el-form-item :label="$t('SYSTEM_MANAGEMENT.USER_MANAGEMENT.EMAIL')" prop="email" style="margin-right: 15px">
-            <el-input size="medium" v-model="formData.email"></el-input>
+            <el-input size="medium" v-model="formData.email" placeholder="请输入邮箱"></el-input>
           </el-form-item>
         </el-col>
         <el-col :span="12">
           <el-form-item :label="$t('SYSTEM_MANAGEMENT.USER_MANAGEMENT.TELEPHONE')" prop="mobile" style="margin-left: 15px">
-            <el-input size="medium" v-model="formData.mobile"></el-input>
+            <el-input size="medium" v-model="formData.mobile" placeholder="请输入手机号"></el-input>
           </el-form-item>
         </el-col>
       </el-row>
@@ -67,7 +67,7 @@
       <el-row>
         <el-col :span="12">
           <el-form-item :label="$t('SYSTEM_MANAGEMENT.USER_MANAGEMENT.PASSWORD')" prop="password" style="margin-right: 15px">
-            <el-input size="medium" v-model="formData.password" type="password" show-password></el-input>
+            <el-input size="medium" v-model="formData.password" type="password" show-password placeholder="请输入密码"></el-input>
             <el-alert show-icon
                 :title="$t('SYSTEM_MANAGEMENT.USER_MANAGEMENT.TITLE')"
                 type="info" :closable="false" effect="dark">
@@ -76,13 +76,13 @@
         </el-col>
         <el-col :span="12">
           <el-form-item :label="$t('SYSTEM_MANAGEMENT.USER_MANAGEMENT.CONPASSWORD')" prop="password_confirmation" style="margin-left: 15px">
-            <el-input size="medium" v-model="formData.password_confirmation" type="password" show-password></el-input>
+            <el-input size="medium" v-model="formData.password_confirmation" type="password" show-password placeholder="请确认密码"></el-input>
           </el-form-item>
         </el-col>
       </el-row>
 
       <el-form-item :label="$t('SYSTEM_MANAGEMENT.USER_MANAGEMENT.REMARKS')" prop="remark">
-        <el-input size="medium" v-model="formData.remark" type="textarea" :rows="1"></el-input>
+        <el-input size="medium" v-model="formData.remark" type="textarea" :rows="1" placeholder="请输入备注"></el-input>
       </el-form-item>
 
       <FormAlert :error_message="error_message"></FormAlert>

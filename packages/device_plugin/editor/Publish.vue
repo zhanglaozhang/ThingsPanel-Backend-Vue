@@ -37,7 +37,11 @@ export default {
   }
 }
 </script>
-
+<style>
+  .el-checkbox .el-checkbox__label{
+    color: black !important;
+  }
+</style>
 <style scoped>
 .publish-container {
   height: 620px;

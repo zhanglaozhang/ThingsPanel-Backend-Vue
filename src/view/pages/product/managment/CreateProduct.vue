@@ -4,11 +4,11 @@
                :before-close="handleClose" :close-on-click-modal="false">
       <el-form label-position="top" :model="formData" :rules="formRules" class="el-dark-input">
         <el-form-item :label="$t('PRODUCT_MANAGEMENT.PRODUCT_LIST.PRODUCT_LIST_ADD.PRODUCTNAME')" prop="name">
-          <el-input v-model="formData.name"></el-input>
+          <el-input v-model="formData.name" placeholder="请输入产品名称"></el-input>
         </el-form-item>
 
         <el-form-item :label="$t('PRODUCT_MANAGEMENT.PRODUCT_LIST.PRODUCT_LIST_ADD.PRODUCTNUMBER')" prop="serial_number">
-          <el-input v-model="formData.serial_number"></el-input>
+          <el-input v-model="formData.serial_number" placeholder="请输入产品编号"></el-input>
         </el-form-item>
 
         <el-row :gutter="20">
@@ -32,13 +32,13 @@
         </el-row>
 
         <el-form-item :label="$t('PRODUCT_MANAGEMENT.PRODUCT_LIST.PRODUCT_LIST_ADD.TITLE32')">
-          <el-input v-model="formData.plugin" @click.native="handleBindPlugin">
+          <el-input v-model="formData.plugin" @click.native="handleBindPlugin" placeholder="请输入设备插件">
 
           </el-input>
         </el-form-item>
 
         <el-form-item :label="$t('PRODUCT_MANAGEMENT.PRODUCT_LIST.PRODUCT_LIST_ADD.PRODUCTDESCRIPTION')">
-          <el-input v-model="formData.describe"></el-input>
+          <el-input v-model="formData.describe" placeholder="请输入产品描述"></el-input>
         </el-form-item>
 
       </el-form>
@@ -144,7 +144,12 @@ export default {
   }
 }
 </script>
-
+<style>
+.el-dark-input .el-input__inner, .el-dark-input .el-textarea__inner{
+  background: #fff !important;
+  color: #000;
+}
+</style>
 <style scoped lang="scss">
 
 ::v-deep .el-form--label-left {

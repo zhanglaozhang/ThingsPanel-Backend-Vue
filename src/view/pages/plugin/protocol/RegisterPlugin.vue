@@ -7,12 +7,12 @@
         <el-row :gutter="20">
           <el-col :span="8">
             <el-form-item :label="$t('PLUGIN.TAB2_CONTENT.NAME')" prop="name">
-              <el-input v-model="formData.name"></el-input>
+              <el-input v-model="formData.name" placeholder="请输入名称"></el-input>
             </el-form-item>
           </el-col>
           <el-col :span="8">
             <el-form-item :label="$t('PLUGIN.TAB2_CONTENT.DEVICETYPE')" prop="device_type">
-              <el-select v-model="formData.device_type">
+              <el-select v-model="formData.device_type" placeholder="请输入设备类型">
                 <el-option value="1" :label="$t('PLUGIN.TAB2_CONTENT.DEVICE')"></el-option>
                 <el-option value="2" :label="$t('PLUGIN.TAB2_CONTENT.NEWWORK')"></el-option>
               </el-select>
@@ -20,7 +20,7 @@
           </el-col>
           <el-col :span="8">
             <el-form-item :label="$t('PLUGIN.TAB2_CONTENT.PROTOCOLTYPE')" prop="protocol_type">
-              <el-input v-model="formData.protocol_type"></el-input>
+              <el-input v-model="formData.protocol_type" placeholder="请输入协议类型"></el-input>
             </el-form-item>
           </el-col>
         </el-row>
@@ -28,17 +28,17 @@
         <el-row :gutter="20">
           <el-col :span="8">
             <el-form-item :label="$t('PLUGIN.TAB2_CONTENT.CONNECTADDRESS')" prop="access_address">
-              <el-input v-model="formData.access_address"></el-input>
+              <el-input v-model="formData.access_address" placeholder="请输入接入地址"></el-input>
             </el-form-item>
           </el-col>
           <el-col :span="8">
             <el-form-item :label="$t('PLUGIN.TAB2_CONTENT.HTTPADDRESS')" prop="http_address">
-              <el-input v-model="formData.http_address"></el-input>
+              <el-input v-model="formData.http_address" placeholder="请输入HTTP服务地址"></el-input>
             </el-form-item>
           </el-col>
           <el-col :span="8">
             <el-form-item :label="$t('PLUGIN.TAB2_CONTENT.LABLE')" prop="sub_topic_prefix">
-              <el-input v-model="formData.sub_topic_prefix"></el-input>
+              <el-input v-model="formData.sub_topic_prefix" placeholder="请输入协议订阅主题前缀"></el-input>
             </el-form-item>
           </el-col>
         </el-row>
@@ -46,12 +46,12 @@
         <el-row :gutter="20">
           <el-col :span="8">
             <el-form-item :label="$t('PLUGIN.TAB2_CONTENT.AUTHOR')" prop="author">
-              <el-input v-model="formData.author"></el-input>
+              <el-input v-model="formData.author" placeholder="请输入作者"></el-input>
             </el-form-item>
           </el-col>
           <el-col :span="16">
             <el-form-item :label="$t('PLUGIN.TAB2_CONTENT.DESCRIBE')" prop="description">
-              <el-input v-model="formData.description"></el-input>
+              <el-input v-model="formData.description" placeholder="请输入描述"></el-input>
             </el-form-item>
           </el-col>
         </el-row>
@@ -178,8 +178,14 @@ export default {
   }
 }
 </script>
-
+<style>
+  .el-dark-input .el-input__inner, .el-dark-input .el-textarea__inner{
+  background-color: #fff !important;
+  color: black !important;
+}
+</style>
 <style scoped>
+
 .config-line {
   margin-top: 16px;
 }

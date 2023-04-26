@@ -62,7 +62,7 @@
           </el-form-item>
 
           <el-form-item v-if="deviceData.authMode=='mqttBasic'" :label="$t('DEVICE_MANAGEMENT.EDIT_PARAMETER.LABLE5')" prop="password">
-            <el-input size="medium" v-model="deviceData.password"></el-input>
+            <el-input size="medium" v-model="deviceData.password" placeholder="请输入密码"></el-input>
           </el-form-item>
         </div>
 
@@ -513,12 +513,12 @@ export default defineComponent({
 
     // 连接信息内容样式
     function getDescriptionContentStyle() {
-      return {color: '#fff', backgroundColor: '#2d3d88!important'}
+      return {color: '#000', backgroundColor: '#fff!important'}
     }
 
     // 连接信息标签样式
     function getDescriptionLabelStyle() {
-      return {width: '160px', fontSize: '11px!important', color: '#ccc!important', backgroundColor: '#2d3d88!important'};
+      return {width: '160px', fontSize: '11px!important', color: '#000!important', backgroundColor: '#fff!important'};
     }
 
 
@@ -545,7 +545,11 @@ export default defineComponent({
   }
 })
 </script>
-
+<style>
+.el-dark-descriptions{
+  border: none !important;
+}
+</style>
 <style scoped lang="scss">
   ::v-deep .exchange-agreement {
 

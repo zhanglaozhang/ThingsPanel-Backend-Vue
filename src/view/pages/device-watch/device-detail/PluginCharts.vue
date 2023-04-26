@@ -327,12 +327,18 @@ export default {
   }
 }
 </script>
-
+<style>
+  .chart-div{
+    background: #fff !important;
+  }
+  .chart-header .title{
+    color: black !important;
+  }
+</style>
 <style scoped lang="scss">
 .grid-item {
   width: 360px;
   height: 360px;
-  /*background-color: #cc0000;*/
 }
 .chart-container {
   width: 100%;

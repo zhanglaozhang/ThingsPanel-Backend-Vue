@@ -339,6 +339,14 @@ export default {
 </script>
 
 <style  lang="scss">
+.el-dark-input .el-input__inner, .el-dark-input .el-textarea__inner{
+  background: #fff !important;
+  color: #000;
+}
+
+.el-dark-input .el-range-input{
+  color: #ccc !important;
+}
 .amap-page-container {
   overflow: hidden;
 }

@@ -7,7 +7,7 @@
       :hide-required-asterisk="true"
       label-width="80px">
     <el-form-item :label="$t('RULE_ENGINE.ACCESS_ENGINE.RULE_NAME')" prop="rule_name">
-      <el-input v-model="form.rule_name"></el-input>
+      <el-input v-model="form.rule_name" placeholder="请输入规则名称"></el-input>
     </el-form-item>
 
       <div style="display: flex;justify-content: center">
@@ -67,7 +67,12 @@ export default {
   }
 }
 </script>
-
+<style>
+  .el-dark-input .el-input__inner, .el-dark-input .el-textarea__inner{
+  background: #fff !important;
+  color: #000;
+}
+</style>
 <style lang="scss">
 .transpond-create{
   //.el-form-item__label{

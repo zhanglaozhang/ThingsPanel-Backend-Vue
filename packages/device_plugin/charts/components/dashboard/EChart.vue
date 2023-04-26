@@ -7,7 +7,7 @@
  * @Description: 
 -->
 <template>
-    <div style="width:100%;height:100%;" ref="chart-main" @click="handleClick"/>
+    <div style="width:100%;height:100%;color:black" ref="chart-main" @click="handleClick"/>
 </template>
 
 <script>
