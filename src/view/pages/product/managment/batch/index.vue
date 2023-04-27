@@ -7,7 +7,7 @@
 
       <el-col :span="12" class="px-2 text-right">
         <el-button size="medium" type="border" @click="handleCreate">{{ $t('PRODUCT_MANAGEMENT.BATCH_LIST.CREATEBATCH') }}</el-button>
-        <el-button size="medium" type="border" @click="handleImport">导入数据</el-button>
+        <!-- <el-button size="medium" type="border" @click="handleImport">导入数据</el-button> -->
       </el-col>
     </el-row>
 
@@ -37,15 +37,15 @@
         <el-table-column align="right" :label="$t('PRODUCT_MANAGEMENT.BATCH_LIST.OPERATION')" width="320px">
           <template v-slot="scope">
             <div class="text-right">
-              <el-button type="indigo"  class="mr-1" size="mini" 
-                v-if="scope.row.generate_flag !== '1'" @click="generateData(scope.row)">{{ $t('PRODUCT_MANAGEMENT.BATCH_LIST.GENERATEDATA') }}</el-button>
+              <!-- <el-button type="indigo"  class="mr-1" size="mini" 
+                v-if="scope.row.generate_flag !== '1'" @click="generateData(scope.row)">{{ $t('PRODUCT_MANAGEMENT.BATCH_LIST.GENERATEDATA') }}</el-button> -->
               
-              <el-button type="indigo"  class="mr-1" size="mini" 
-                v-if="scope.row.generate_flag == '1'" @click="viewPreRegistration(scope.row)">查看预注册</el-button>
+              <!-- <el-button type="indigo"  class="mr-1" size="mini" 
+                v-if="scope.row.generate_flag == '1'" @click="viewPreRegistration(scope.row)">查看预注册</el-button> -->
 
-              <el-button type="indigo" class="mr-1" size="mini"
+              <!-- <el-button type="indigo" class="mr-1" size="mini"
                 v-if="scope.row.generate_flag == '1'"  :loading="exportLoading"
-                @click="exportQRCodeAndData(scope.row)">{{ $t('PRODUCT_MANAGEMENT.BATCH_LIST.IMPORTDATA') }}</el-button>
+                @click="exportQRCodeAndData(scope.row)">{{ $t('PRODUCT_MANAGEMENT.BATCH_LIST.IMPORTDATA') }}</el-button> -->
 
               <!-- <el-button type="indigo" class="mr-1" size="mini" @click="exportData(scope.row)">{{ $t('PRODUCT_MANAGEMENT.BATCH_LIST.IMPORTDATA') }}</el-button> -->
               <el-popconfirm class="mr-1" :title="$t('AUTOMATION.TITLE4')" @confirm="handleDelete(scope.row)">
@@ -118,7 +118,7 @@ export default {
       createDialogVisible: false,
       exportLoading: false,
       importDialogVisible: false,
-      generateEnabled: true,   // 生成数据按钮是否可用
+      generateEnabled: false,   // 生成数据按钮是否可用
       exportVisible: false, // 导出二维码和数据对话框
       exporting: false,
       downloadUrl: ""

@@ -8,7 +8,7 @@ const BATCH_BASE_URL = "/tp_batch"
  * 产品API
  */
 export default {
-
+    
     /**
      * 添加
      * @param data
@@ -56,6 +56,13 @@ export default {
     page: (data) => {
         return axios({
             url: BASE_URL + "/list",
+            method: "post",
+            data
+        })
+    },
+    pages: (data) => {
+        return axios({
+            url: BATCH_BASE_URL + "/count",
             method: "post",
             data
         })

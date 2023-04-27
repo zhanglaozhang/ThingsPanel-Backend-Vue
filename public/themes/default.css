@@ -153,7 +153,7 @@ span.text-blue.font-weight-bold.font-size-base.d-none.d-lg-block.mr-1 {
 }
 
 .el-form-item__content .el-input__inner{
-    color: #000;
+    color: #000 !important;
     background-color: #fff !important;
     border-color: rgba(0, 0, 0, 0.1) !important;
     height: 40px;

@@ -21,14 +21,14 @@
           @change="handleSearch()"
       ></DeviceGroupSelector>
     </el-col>
-    <!-- <el-col :span="5">
+    <el-col :span="5">
         <DevicePluginSelector
             :plugin_type.sync="params.device_type"
             :options="devicePluginOptions"
             :clearable="true"
             @change="handleSearch()"
         ></DevicePluginSelector>
-    </el-col> -->
+    </el-col>
     <el-col :span="5">
       <el-input
           :placeholder="$t('DEVICE_MANAGEMENT.PLACEHOLDER2')"
@@ -104,12 +104,7 @@
     <!-- 绑定插件 -->
     <el-table-column :label="$t('DEVICE_MANAGEMENT.BINGPLUGINS')" min-width="15%">
       <template slot-scope="scope">
-        <!-- <el-button v-if="scope.row.device_type!='2'" type="text" @click="handleBindingClick(scope.row)">{{ $t("DEVICE_MANAGEMENT.BINGPLUGINS")}}</el-button> -->
-        <device-plugin-selector ref="devicePluginSelectorRef" v-if="scope.row.device_type!='2'"
-            :data="scope.row" 
-            :options="pluginTree"
-            @select="(v, cb) => handleSelectPlugin(scope.row, v, cb)"
-        ></device-plugin-selector>
+        <el-button v-if="scope.row.device_type!='2'" type="text" @click="handleBindingClick(scope.row)">{{ $t("DEVICE_MANAGEMENT.BINGPLUGINS")}}</el-button>
       </template>
     </el-table-column>
 
@@ -228,7 +223,7 @@
 
 <script>
 import {defineComponent, onBeforeUnmount} from "@vue/composition-api";
-import {ref, nextTick} from "@vue/composition-api/dist/vue-composition-api";
+import {ref} from "@vue/composition-api/dist/vue-composition-api";
 
 import useRoute from "@/utils/useRoute";
 import {dateFormat} from "@/utils/tool";
@@ -244,7 +239,6 @@ import useDeviceIndex from "./useDeviceIndex";
 import useDeviceCUD from "@/view/pages/device/useDeviceCUD";
 import useDeviceGroup from "@/view/pages/device/useDeviceGroup";
 
-import useDevicePlugin from "./useDevicePlugin";
 // 插件绑定
 import PluginBinding from "./form/plugin/PluginBindingForm";
 // 配置推送参数
@@ -294,7 +288,6 @@ export default defineComponent({
       deviceTypeMap,
     } = useDeviceIndex(business_id)
 
-
     // 设备的增删改
     let {
       handleCreate,
@@ -311,25 +304,6 @@ export default defineComponent({
       currentDeviceItem.value = row;
       console.log("deviceTypeChange", row)
       handleSave(row, () => {
-        getDeviceIndex();
-      });
-    }
-
-    /**
-     * 插件
-     */
-    const { getPluginTree, bindPlugin } = useDevicePlugin();
-    const pluginTree = ref([]);
-    async function getPluginList() {
-      pluginTree.value = await getPluginTree();
-    }
-    getPluginList();
-
-    const devicePluginSelectorRef = ref(null);
-    function handleSelectPlugin(row, v, callback) {
-      console.log("handleSelectPlugin", row)
-      bindPlugin(row, v, () => {
-        callback && callback();
         getDeviceIndex();
       });
     }
@@ -486,12 +460,7 @@ export default defineComponent({
       total,
       handleSearch,
       handleReset,
-      // 绑定插件
-      pluginTree,
-      devicePluginSelectorRef,
-      handleSelectPlugin,
       devicePluginOptions,
-
       deviceTypeMap,
       handleCreate,
       handleSave,
@@ -524,6 +493,9 @@ export default defineComponent({
 </script>
 
 <style scoped>
+::v-deep .el-input--medium .el-input__inner{
+  color: #000 !important;
+}
 /*/deep/ .el-form-item__content{*/
 /*  line-height: 1;*/
 /*}*/
