@@ -10,9 +10,11 @@
   <el-dialog class="el-dark-dialog" title="创建批次" :visible.sync="dialogVisible" width="400px"
              :before-close="handleClose" :close-on-click-modal="false">
     <el-form :inline="false" label-position="left"  :model="formData" :rules="formRules">
+    <el-form :inline="false" label-position="left"  :model="formData" :rules="formRules">
 
       <el-row>
         <el-form-item label="批次号" prop="batch_number">
+          <el-input v-model="formData.batch_number" placeholder="请输入批次号"></el-input>
           <el-input v-model="formData.batch_number" placeholder="请输入批次号"></el-input>
         </el-form-item>
       </el-row>
@@ -96,6 +98,12 @@ export default {
   }
 }
 </script>
+<style>
+.el-dark-input .el-input__inner, .el-dark-input .el-textarea__inner{
+  background: #fff !important;
+  color: #000;
+}
+</style>
 <style>
 .el-dark-input .el-input__inner, .el-dark-input .el-textarea__inner{
   background: #fff !important;

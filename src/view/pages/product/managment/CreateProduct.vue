@@ -5,9 +5,11 @@
       <el-form label-position="top" :model="formData" :rules="formRules" class="el-dark-input">
         <el-form-item :label="$t('PRODUCT_MANAGEMENT.PRODUCT_LIST.PRODUCT_LIST_ADD.PRODUCTNAME')" prop="name">
           <el-input v-model="formData.name" placeholder="请输入产品名称"></el-input>
+          <el-input v-model="formData.name" placeholder="请输入产品名称"></el-input>
         </el-form-item>
 
         <el-form-item :label="$t('PRODUCT_MANAGEMENT.PRODUCT_LIST.PRODUCT_LIST_ADD.PRODUCTNUMBER')" prop="serial_number">
+          <el-input v-model="formData.serial_number" placeholder="请输入产品编号"></el-input>
           <el-input v-model="formData.serial_number" placeholder="请输入产品编号"></el-input>
         </el-form-item>
 
@@ -38,6 +40,7 @@
         </el-form-item>
 
         <el-form-item :label="$t('PRODUCT_MANAGEMENT.PRODUCT_LIST.PRODUCT_LIST_ADD.PRODUCTDESCRIPTION')">
+          <el-input v-model="formData.describe" placeholder="请输入产品描述"></el-input>
           <el-input v-model="formData.describe" placeholder="请输入产品描述"></el-input>
         </el-form-item>
 
@@ -145,6 +148,12 @@ export default {
   }
 }
 </script>
+<style>
+.el-dark-input .el-input__inner, .el-dark-input .el-textarea__inner{
+  background: #fff !important;
+  color: #000;
+}
+</style>
 <style>
 .el-dark-input .el-input__inner, .el-dark-input .el-textarea__inner{
   background: #fff !important;
