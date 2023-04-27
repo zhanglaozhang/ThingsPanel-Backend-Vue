@@ -10,7 +10,6 @@
   <el-dialog class="el-dark-dialog" title="创建批次" :visible.sync="dialogVisible" width="400px"
              :before-close="handleClose" :close-on-click-modal="false">
     <el-form :inline="false" label-position="left"  :model="formData" :rules="formRules">
-    <el-form :inline="false" label-position="left"  :model="formData" :rules="formRules">
 
       <el-row>
         <el-form-item label="批次号" prop="batch_number">
