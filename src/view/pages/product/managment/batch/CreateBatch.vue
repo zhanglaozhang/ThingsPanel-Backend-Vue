@@ -14,7 +14,6 @@
       <el-row>
         <el-form-item label="批次号" prop="batch_number">
           <el-input v-model="formData.batch_number" placeholder="请输入批次号"></el-input>
-          <el-input v-model="formData.batch_number" placeholder="请输入批次号"></el-input>
         </el-form-item>
       </el-row>
       <el-row>
