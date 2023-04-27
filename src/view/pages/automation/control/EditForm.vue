@@ -4,7 +4,7 @@
       class="el-dark-dialog"
       :close-on-click-modal="false"
       :visible.sync="dialogVisible"
-      width="60%"
+      width="1100px"
       height="60%"
       top="10vh"
   >
@@ -146,6 +146,7 @@ export default {
       this.formData.conditions = v;
     },
     handleActionChange(v) {
+      console.log("handleActionChange", v);
       this.formData.actions = v;
     },
     /**

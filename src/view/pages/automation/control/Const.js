@@ -1,11 +1,3 @@
-/*
- * @Author: chaoxiaoshu-mx leukotrichia@163.com
- * @Date: 2023-02-20 19:41:00
- * @LastEditors: chaoxiaoshu-mx leukotrichia@163.com
- * @LastEditTime: 2023-03-10 09:12:06
- * @FilePath: \ThingsPanel-Backend-Vue\src\view\pages\automation\control\Const.js
- * @Description: 
- */
 /**
  * @description: 条件类型
  */
@@ -80,6 +72,18 @@ const RepeatTimeType = {
     getKey: value => Object.keys(RepeatTimeType).find(key => RepeatTimeType[key] === value)
 }
 
+/**
+ * @description: 周
+ */
+const Week = {
+    SUNDAY: 1,
+    MONDAY: 2,
+    TUESDAY: 3,
+    WEDNESDAY: 4,
+    THURSDAY: 5,
+    FRIDAY: 6,
+    SATURDAY: 7,
+}
 /**
  * @description: 动作类型
  */
@@ -159,15 +163,17 @@ export function setConditions(conditions) {
                             break;
                         }
                         case RepeatTimeType.weekly: {
-                            // 每周
-                            condition['v3'] = repeat.weekly.week.toString();
+                            // 每周周几
+                            // 周日: 1, 周一: 2, ..., 周六: 7
+                            let v3 = repeat.weekly.week;
+                            condition['v3'] = v3.toString();
                             condition['v4'] = repeat.weekly.time.toString();
                             break;
                         }
                         case RepeatTimeType.monthly: {
                             // 每月
-                            condition['v3'] = repeat.monthly.day.toString();
-                            condition['v4'] = repeat.monthly.time.toString();
+                            condition['v3'] = repeat.monthly.day.toString() + ":" + repeat.monthly.time.toString();
+                            // condition['v4'] = repeat.monthly.time.toString();
                             break;
                         }
                         case RepeatTimeType.cron: {
@@ -229,7 +235,7 @@ export function setActions(actions, name) {
                         {
                             ...action,
                             device_id: item.deviceId,     // 设备id
-                            additional_info: additionalInfo
+                            additional_info: JSON.stringify(additionalInfo)
                         }
                     )
                 })
@@ -288,7 +294,9 @@ export function getConditions(conditions) {
                 temp = groupNumber;
             }
             if (item.condition_type == ConditionType.device) {
-                // 设备条件
+                // =================================================================================
+                // 设备条件 start
+                // =================================================================================
                 condition.type = ConditionType.getKey(item.condition_type);
                 condition.data = {
                     projectId: item.business_id,
@@ -319,11 +327,13 @@ export function getConditions(conditions) {
                         value: item.v3
                     }
                 };
-
-
-                
+                // =================================================================================
+                // 设备条件 end
+                // =================================================================================
             } else {
-                // 时间条件
+                // =================================================================================
+                // 时间条件 start
+                // =================================================================================
                 condition.type = ConditionType.getKey(item.condition_type);
                 condition.data = {
                     type: TimeType.getKey(item.time_condition_type)
@@ -359,10 +369,16 @@ export function getConditions(conditions) {
                                 break;
                             }
                             case RepeatTimeType.monthly: {
+                                // 从接口获取的数据格式为 dd:HH:mm
+                                let arr = item.v3.split(":");
+                                // 每月
                                 condition.data.repeat.monthly = {
-                                    day: item.v3,
-                                    time: item.v4
+                                    day: arr[0],
+                                    time: arr[1] + ":" + arr[2]
                                 }
+                                
+                                break;
+
                             }
                             case RepeatTimeType.cron: {
                                 condition.data.repeat.cron = item.v3;
@@ -382,6 +398,9 @@ export function getConditions(conditions) {
                         break;
                     }
                 }
+                // =================================================================================
+                // 时间条件 end
+                // =================================================================================
             }
             conditionList.push(condition);
         })
@@ -391,6 +410,7 @@ export function getConditions(conditions) {
     
     return conditionList;
 }
+
 
 /**
      * @description: 回显action
@@ -410,13 +430,13 @@ export function getActions(actions) {
                 state: {}
             };
             const additionalInfo = item.additional_info ? JSON.parse(item.additional_info) : {};
-            const name = Object.keys(additionalInfo.instruct)[0];
+            const name = Object.keys(additionalInfo.instruct || {})[0];
             command.state = {
                 name,
                 mode: "property",
                 operator: {
                     symbol: "",
-                    value: additionalInfo.instruct[name]
+                    value: additionalInfo.instruct ? additionalInfo.instruct[name] : ""
                 }
             }
             commands.push(command);
@@ -445,4 +465,4 @@ export function getActions(actions) {
     return actionList;
 }
 
-export { ConditionType, StateMode, TimeType, RepeatTimeType, ActionType, CommandType }
+export { ConditionType, StateMode, TimeType, RepeatTimeType, Week, ActionType, CommandType }

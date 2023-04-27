@@ -30,10 +30,11 @@
       <div style="margin-top: 10px;display: flex;justify-content: center">
         <el-button type="cancel" style="color:#000" @click="closeDialog">{{ $t('DEVICE_MANAGEMENT.CUSTOM_SCRIPT.CANCEL') }}</el-button>
         <el-button type="save" @click="onSubmit">{{ $t('DEVICE_MANAGEMENT.CUSTOM_SCRIPT.SAVE') }}</el-button>
+        <el-button type="save" @click="onPublish">发布</el-button>
       </div>
     </el-form>
 
-
+    <login-store :visible.sync="loginStoreDialogVisible"></login-store>
   </el-dialog>
 </template>
 
@@ -41,7 +42,11 @@
 import {defineComponent, ref, watch, reactive} from "@vue/composition-api";
 import CodeEditor from 'simple-code-editor';
 import {message_success} from "@/utils/helpers";
+import StoreAPI from "@/api/store"
 import {getCustomExchangeAgreementList, addCustomExchangeAgreement, editCustomExchangeAgreement} from "@/api/device";
+import LoginStore from "@/view/pages/auth/LoginStore"
+import useRoute from "@/utils/useRoute";
+import store from "@/core/services/store/index"
 const upCodeTemp = " function encodeInp(msg, topic){\n" +
 "    // 将设备自定义msg（自定义形式）数据转换为json形式数据, 设备上报数据到物联网平台时调用\n" +
 "    // 入参：topic string 设备上报消息的 topic\n" +
@@ -71,7 +76,7 @@ const downCodeTemp = " function encodeInp(msg, topic){\n" +
 export default defineComponent ({
   name: "CustomExchangeAgreement",
   components: {
-    CodeEditor
+    CodeEditor, LoginStore
   },
   props: {
     dialogVisible: {
@@ -87,6 +92,7 @@ export default defineComponent ({
     }
   },
   setup(props, context) {
+    let {route} = useRoute();
 
     let formData = reactive({
       id: "",
@@ -135,7 +141,12 @@ export default defineComponent ({
       context.emit("update:dialogVisible", false);
     }
 
+      
     const customForm = ref(null);
+    /**
+     * @description: 保存
+     * @return {*}
+     */  
     function onSubmit() {
       formData.script_name = formData.company + "" + formData.product_name;
       formData.protocol_type = props.device.protocol;
@@ -168,12 +179,40 @@ export default defineComponent ({
       });
     }
 
+
+    const loginStoreDialogVisible = ref(false);
+    /**
+     * @description: 发布
+     * @return {*}
+     */    
+    function onPublish() {
+      const isAuth = store.getters.getStoreAuthenticated;
+      if (isAuth) {
+        const data = {
+          productCompany: formData.company,
+          productName: formData.product_name,
+          protocolType: props.device.protocol,
+          scriptAuthor: "",
+          scriptDescribe: "",
+          scriptName: formData.company + "" + formData.product_name,
+          uplinkScript: formData.script_content_a,
+          downlinkScript: formData.script_content_b
+        }
+        StoreAPI.publish.script(data)
+          .then(({ data: result }) => {
+            console.log(result)
+          })
+      } else {
+        loginStoreDialogVisible.value = true;
+      }
+      
+    }
+
     return {
-      customForm,
-      formRule,
-      formData,
+      customForm, formRule, formData,
       closeDialog,
-      onSubmit
+      onSubmit,
+      onPublish, loginStoreDialogVisible
     }
   }
 })

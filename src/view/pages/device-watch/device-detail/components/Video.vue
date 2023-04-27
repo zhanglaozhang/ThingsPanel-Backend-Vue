@@ -2,23 +2,35 @@
   <div class="chart-div">
     <div class="chart-header" v-if="showHeader">
       <span class="title">{{ optionData.name }}</span>
-      <div class="tool-right">
+      <div class="tool-right" v-if="optionData.type=='monitor'">
+        <el-button class="tool-item" :class="monitorType==='control' ? 'selected' : ''" size="mini" 
+          @click="handleChangeMonitorType('control')">控制</el-button>
+
+        <el-button class="tool-item" :class="monitorType==='record' ? 'selected' : ''" size="mini" 
+          @click="handleChangeMonitorType('record')">回放</el-button>
+
+        <el-button class="tool-item" :class="monitorType==='default' ? 'selected' : ''" size="mini" 
+          @click="handleChangeMonitorType('default')">默认</el-button>
+
         <el-button class="tool-item" size="mini" icon="el-icon-more"></el-button>
       </div>
     </div>
 
     <div class="video-box" ref="videoBox">
 
-      <video-player v-if="optionData.type=='monitor'" style="width: 100%;height: 100%" :src="optionData.src"
-                    ></video-player>
 
-      <video-control v-else-if="optionData.type=='monitor_control'" style="width: 100%;height: 100%" :src="optionData.src"
-                     @command="handleCommand"></video-control>
+      <video-player ref="videoPlayer" style="width: 100%;height: 100%" 
+        v-if="optionData.type=='video'"
+        :src="optionData.src"
+        ></video-player>
 
-      <video-record v-else-if="optionData.type=='monitor_playback'" style="width: 100%;height: 100%"
-                    :src="optionData.src" :device="device"
-                     @command="handleCommand"></video-record>
+      <monitor-player ref="monitorPlayer" style="width: 100%;height: 100%" 
+        v-if="optionData.type=='monitor'" :type="monitorType" :device="device"
+        ></monitor-player>
 
+      <ezviz-player ref="ezvizPlayer" style="width: 100%;height: 100%" 
+        v-if="optionData.type=='ezviz'" :src="optionData.src" :appKey="optionData.appKey" :appSecret="optionData.appSecret"
+        ></ezviz-player>
 
     </div>
 
@@ -27,13 +39,14 @@
 
 <script>
 import ProtocolPluginAPI from "@/api/protocolPlugin"
-import VideoPlayer from "@/components/common/VideoPlayer";
-import VideoControl from "@/components/common/VideoControl";
-import VideoRecord from "@/components/common/VideoRecord";
+import VideoPlayer from "@/components/video/video";
+import MonitorPlayer from "@/components/video/monitor";
+import EzvizPlayer from "@/components/video/ezviz";
+
 export default {
   name: "Video",
   components: {
-    VideoPlayer, VideoControl, VideoRecord
+    VideoPlayer, MonitorPlayer, EzvizPlayer
   },
   props: {
     showHeader: {
@@ -52,11 +65,7 @@ export default {
   data() {
     return {
       optionData: {},
-      params: {
-        horizonSpeed: "30",
-        verticalSpeed: "30",
-        zoomSpeed: "30"
-      }
+      monitorType: "default"
     }
   },
   mounted() {
@@ -67,52 +76,35 @@ export default {
         if (newValue) {
           let additionalInfo = (this.device.additional_info && this.device.additional_info != "null") ? JSON.parse(this.device.additional_info) : {};
           this.optionData = JSON.parse(JSON.stringify(newValue))
-
-          this.params.sub_device_addr = this.device.sub_device_addr;
-          this.params.parent_id = this.device.parent_id;
-          if (this.device.protocol.startsWith("WVP_")) {
-            this.callPlayWVP();
+          if (this.optionData.type === "video") {
+            setTimeout(() => {
+              this.optionData.src = additionalInfo.video_address ? additionalInfo.video_address : "";
+            }, 50)
+          } else if (this.optionData.type === "ezviz") {
+            setTimeout(() => {
+              this.optionData.src = additionalInfo.video_address ? additionalInfo.video_address : "";
+              this.optionData.appKey = additionalInfo.app_key ? additionalInfo.app_key : "";
+              this.optionData.appSecret = additionalInfo.secret ? additionalInfo.secret : "";
+            }, 50)
           }
-          this.optionData.src = additionalInfo.video_address ? additionalInfo.video_address : "";
         }
       },
       immediate: true
     }
   },
   methods: {
+    /**
+     * 切换监控类型
+     * @param type
+     */
+    handleChangeMonitorType(type) {
+      this.monitorType = type;
+    },
     sizeChange() {
       let videoBox = this.$refs.videoBox;
-      console.log("====video.sizeChange()", videoBox.clientWidth, videoBox.clientHeight)
     },
-    /**
-     * 播放WVP直播流时需要调用一次
-     */
-    callPlayWVP() {
-      ProtocolPluginAPI.callPlayWVP(this.params)
-        .then(({data}) => {
-          if (data.code == 200) {
-            let result = data.data.data;
-            if (!this.optionData.src) {
-              this.optionData.src = result.flv;
-            }
-          }
-        })
-    },
-    /**
-     * 播放组件控制回调
-     * @param command
-     */
-    handleCommand(command) {
-      console.log("====video.handleCommand", command);
-      this.params.command = command.toLowerCase();
-      this.params.horizonSpeed = "30";
-      this.params.verticalSpeed = "30";
-      this.params.zoomSpeed = "30";
-
-      ProtocolPluginAPI.commandPlayerPTZ(this.params)
-        .then(({data}) => {
-          console.log("====video.handleCommand", data);
-        })
+    nodeChanged() {
+      this.$refs.videoPlayer.destroy();
     }
   }
 }
@@ -154,7 +146,13 @@ export default {
     }
 
     .tool-item {
+      color: #ffffff;
       background: transparent !important;
+      border: 0px solid transparent;
+    }
+    .selected {
+      color: #2d3d86;
+      background: #ffffff !important;
       border: 0px solid transparent;
     }
   }

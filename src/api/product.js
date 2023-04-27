@@ -1,4 +1,5 @@
-import axios from "./http"
+import axios from "./interceptor/http"
+import { local_url } from "@/api/LocalUrl"
 
 const BASE_URL = "/tp_product"
 const BATCH_BASE_URL = "/tp_batch"
@@ -125,6 +126,21 @@ export default {
         })
     },
 
+    uploadUrl: local_url + "api/file/up",
+
+    /**
+     * 导入批次
+     * @param {*} data 
+     * @returns 
+     */
+    importBatch: data => {
+        return axios({
+            url: BATCH_BASE_URL + "/import",
+            method: "post",
+            data
+        })
+    },
+
     /**
      * 导出二维码和数据
      * @param data
@@ -137,4 +153,70 @@ export default {
             data
         })
     },
+
+    /**
+     * 获取预注册分页列表
+     * @param {*} data 
+     * @returns 
+     */
+    getPreRegistration: data => {
+        return axios({
+            url: "/tp_generate_device/list",
+            method: "post",
+            data
+        })
+    },
+
+    /**
+     * 激活设备
+     * @param {*} data
+     * @returns
+     */
+    generateDevice: data => {
+        return axios({
+            url: "/tp_generate_device/activate",
+            method: "post",
+            data
+        })
+    },
+    
+    /**
+     * 删除未激活预注册设备
+     * @param {*} data 
+     * @returns 
+     */
+    deletePreRegistration: data => {
+        return axios({
+            url: "/tp_generate_device/delete",
+            method: "post",
+            data
+        })
+    },
+
+    
+    /**
+     * 通过产品id获取设备列表
+     * @param data
+     * @returns {AxiosPromise}
+     */
+    getDeviceListByProductId: (data) => {
+        return axios({
+            url: "/device/listbyproduct",
+            method: "post",
+            data
+        })
+    },
+
+    /**
+     * 添加固件升级任务
+     * @param {*} data 
+     * @returns 
+     */
+    addTask: data => {
+        return axios({
+            url: "/tp_ota_task/add",
+            method: "post",
+            data
+        })
+    }
 }

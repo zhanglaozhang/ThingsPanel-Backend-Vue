@@ -11,7 +11,7 @@
     </el-row>
 
     <!-- 筛选 start -->
-    <el-row type="flex" :gutter="20" class="pt-3 pb-4 px-3 el-dark-input">
+    <!-- <el-row type="flex" :gutter="20" class="pt-3 pb-4 px-3 el-dark-input">
 
       <el-col :span="12">
         <el-input :placeholder="$t('PRODUCT_MANAGEMENT.PRODUCT_LIST.PRODUCTNUMBER')" v-model="params.serialNumber" clearable></el-input>
@@ -19,9 +19,8 @@
 
       <el-col :span="12">
         <el-button type="border" size="medium" @click="handleSearch">{{ $t('PRODUCT_MANAGEMENT.PRODUCT_LIST.SEARCH') }}</el-button>
-        <!--      <el-button type="default" size="medium" @click="handleReset()">重置</el-button>-->
       </el-col>
-    </el-row>
+    </el-row> -->
     <!-- 筛选 end -->
 
     <!-- 表 start -->
@@ -67,9 +66,9 @@
         </el-table-column>
 
         <!-- 操作列-->
-        <el-table-column align="left" :label="$t('PRODUCT_MANAGEMENT.PRODUCT_LIST.OPERATION')" width="230">
+        <el-table-column align="center" :label="$t('PRODUCT_MANAGEMENT.PRODUCT_LIST.OPERATION')" width="230">
           <template v-slot="scope">
-            <div style="text-align: left">
+            <div style="text-align: center">
               <el-button type="indigo" size="mini" class="mr-3" @click="showBatch(scope.row)">批量管理</el-button>
               <el-popconfirm :title="$t('AUTOMATION.TITLE4')" @confirm="handleDelete(scope.row)">
                 <el-button slot="reference" size="mini" type="danger">{{ $t('PRODUCT_MANAGEMENT.PRODUCT_LIST.DELETE') }}</el-button>
@@ -127,6 +126,7 @@ export default {
      * 获取产品列表
      */
     getProductList() {
+      this.loading = true;
       this.params.serial_number = "%" + this.params.serialNumber + "%";
       ProductAPI.page(this.params)
         .then(({ data }) => {
@@ -136,6 +136,9 @@ export default {
               return item;
             })
           }
+        })
+        .finally(() => {
+          this.loading = false;
         })
     },
     handleSearch() {
@@ -161,7 +164,6 @@ export default {
             message_success("产品删除成功");
             this.getProductList();
           }
-          console.log(data)
         })
     }
   }

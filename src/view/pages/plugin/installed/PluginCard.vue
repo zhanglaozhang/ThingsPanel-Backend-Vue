@@ -1,7 +1,7 @@
 <template>
   <b-card class="mb-5 text-center card-border margin-auto marketbox"
           v-bind:key="data.id"
-          :title="pluginData.model_name"
+          :title="pluginData.name"
           :img-src="'media/logos/wsd.png'"
           img-alt="Image"
           img-top
@@ -12,7 +12,7 @@
     <div style="padding: 2.25rem;">
       <!-- 分类 -->
       <b-card-text class="text-left text-muted">
-        {{ $t("PLUGIN.TAB1_CONTENT.CLASSIFY") }}：{{ pluginData.type }}
+        {{ $t("PLUGIN.TAB1_CONTENT.CLASSIFY") }}：{{ pluginData.devicePluginTypeLabel }}
       </b-card-text>
 
       <!-- 版本 -->
@@ -38,7 +38,7 @@
 
     <!-- 按钮 -->
     <b-card-text style="margin-top: 10px">
-      <b-btn v-show="isInstalled" variant="warning" size="sm" class="text-center" @click="handleEdit">
+      <b-btn v-show="pluginData.pluginType === pluginType.Device" variant="warning" size="sm" class="text-center" @click="handleEdit">
         {{ $t("PLUGIN.TAB1_CONTENT.EDIT") }}
       </b-btn>
       <b-btn v-show="!isInstalled"
@@ -55,27 +55,7 @@
       </b-btn>
     </b-card-text>
 
-    <!-- 导出JSON-->
-    <el-dialog class="el-dark-dialog el-table-transparent" :title="$t('PLUGIN.TAB1_CONTENT.TITLE')" :visible.sync="exportDialogVisible" width="30%">
-      <el-row >
-        <div style="margin-bottom: 10px;display: flex;justify-content: space-between">
 
-        </div>
-      </el-row>
-      <el-row>
-        <el-input class="el-dark-input" type="textarea" :rows="24" :placeholder="$t('PLUGIN.TAB1_CONTENT.PLACEHOLDER1')" v-model="exportPluginJson"></el-input>
-      </el-row>
-
-      <span slot="footer" class="dialog-footer">
-        <el-button  @click="exportDialogVisible = false">{{ $t('PLUGIN.TAB1_CONTENT.CANCEL') }}</el-button>
-        <el-button type="primary" class="el-button--indigo" @click="handleExport">{{ $t('PLUGIN.TAB1_CONTENT.EXPORT') }}</el-button>
-        <el-button type="primary" class="el-button--indigo"
-                   v-clipboard:copy="exportPluginJson"
-                   v-clipboard:success="onCopy"
-                   v-clipboard:error="onError"
-        >{{ $t('PLUGIN.TAB1_CONTENT.PLACEHOLDER2') }}</el-button>
-      </span>
-    </el-dialog>
   </b-card>
 </template>
 
@@ -83,15 +63,12 @@
 import { MessageBox } from 'element-ui';
 import {message_success} from "../../../../utils/helpers";
 import PluginAPI from "@/api/plugin.js"
+import { PluginType } from "../Const";
 export default {
   name: "PluginCard",
   props: {
     data: {
       type: Object,
-      default: () => {}
-    },
-    category: {
-      type: [Array],
       default: () => {}
     },
     isInstalled: {
@@ -107,12 +84,12 @@ export default {
       installing: false,
       exportPluginJson: "",
       exportDialogVisible: false,
+      pluginType: PluginType
     }
   },
   created() {
     this.pluginData = JSON.parse(JSON.stringify(this.data));
-    let cat = this.category.find(item => item['dict_value'] == this.pluginData['model_type'])
-    this.pluginData['type'] = cat.describe;
+    console.log("===PluginCard.pluginData" , this.pluginData)
   },
   methods: {
     /**
@@ -144,8 +121,8 @@ export default {
      * 打开导出对话框
      */
     handleShowExport() {
-      this.exportDialogVisible = true;
-      this.exportPluginJson = JSON.stringify(JSON.parse(this.pluginData['chart_data']), null, 4);
+      // const jsonData = JSON.stringify(JSON.parse(this.pluginData['jsonData']), null, 4);
+      this.$emit("export", this.pluginData)
     },
     /**
      * 卸载插件

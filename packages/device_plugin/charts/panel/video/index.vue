@@ -1,21 +1,26 @@
+
 <template>
   <div class="video-container">
     <div class="video-item-list">
       <div class="video-item" :style="option.style ? option.style : {}" v-for="(option, index) in charts" :key="index" @click="showDialog(option)">
         <div class="video-item-header" >{{ option.title }}</div>
 
-        <video-player1 class="video-player" v-if="option.type == 'monitor'" :ref="'video_' + option.index" :option="option"
+
+        <video-player class="video-player" v-if="option.type == 'video'" :ref="'video_' + option.index" :option="option"
+                      @submit="handleSubmit">
+        </video-player>
+
+        <monitor-player class="video-player" v-if="option.type == 'monitor'" :ref="'video_' + option.index" :option="option"
                         @submit="handleSubmit">
-        </video-player1>
+        </monitor-player>
 
-        <video-player2 class="video-player" v-if="option.type == 'monitor_control'" :ref="'video_' + option.index" :option="option"
-                       @submit="handleSubmit">
-        </video-player2>
+        <ezviz-player class="video-player" v-if="option.type == 'ezviz'" :ref="'video_' + option.index" :option="option"
+                @submit="handleSubmit">
+        </ezviz-player>
 
-
-        <video-player3 class="video-player" v-if="option.type == 'monitor_playback'" :ref="'video_' + option.index" :option="option"
-                       @submit="handleSubmit">
-        </video-player3>
+        <!-- <monitor-player class="video-player" v-if="option.type == 'monitor'" :ref="'video_' + option.index" :option="option"
+                        @submit="handleSubmit">
+        </monitor-player> -->
 
       </div>
     </div>
@@ -24,14 +29,14 @@
 </template>
 
 <script>
-import VideoPlayer1 from "../../components/video/VideoPlayer1"
-import VideoPlayer2 from "../../components/video/VideoPlayer2"
-import VideoPlayer3 from "../../components/video/VideoPlayer3"
+import MonitorPlayer from "../../components/video/MonitorPlayer";
+import VideoPlayer from "../../components/video/VideoPlayer";
+import EzvizPlayer from "../../components/video/EzvizPlayer"
 
 export default {
   name: "VideoPanel",
   components:{
-    VideoPlayer1, VideoPlayer2, VideoPlayer3
+    MonitorPlayer, VideoPlayer, EzvizPlayer
   },
   props: {
     charts: {

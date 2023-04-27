@@ -32,7 +32,7 @@
         </el-row>
 
         <el-form-item :label="$t('PRODUCT_MANAGEMENT.PRODUCT_LIST.PRODUCT_LIST_ADD.TITLE32')">
-          <el-input v-model="formData.plugin" @click.native="handleBindPlugin" placeholder="请输入设备插件">
+          <el-input v-model="formData.pluginName" @click.native="handleBindPlugin">
 
           </el-input>
         </el-form-item>
@@ -44,9 +44,9 @@
       </el-form>
 
       <span slot="footer" class="dialog-footer">
-      <el-button type="cancel" @click="handleClose">{{ $t('PRODUCT_MANAGEMENT.PRODUCT_LIST.PRODUCT_LIST_ADD.CANCEL') }}</el-button>
-      <el-button type="save" @click="handleSubmit">{{ $t('PRODUCT_MANAGEMENT.PRODUCT_LIST.PRODUCT_LIST_ADD.CONFIRM') }}</el-button>
-    </span>
+        <el-button type="cancel" @click="handleClose">{{ $t('PRODUCT_MANAGEMENT.PRODUCT_LIST.PRODUCT_LIST_ADD.CANCEL') }}</el-button>
+        <el-button type="save" @click="handleSubmit">{{ $t('PRODUCT_MANAGEMENT.PRODUCT_LIST.PRODUCT_LIST_ADD.CONFIRM') }}</el-button>
+      </span>
     </el-dialog>
     <plugin-binding-form :dialog-visible.sync="pluginDialogVisible" @submit="handleBindPluginSubmit"></plugin-binding-form>
   </div>
@@ -91,8 +91,8 @@ export default {
       },
       dialogVisible: false,
       protocolOptions: [
-        { value: "mqtt", label: "mqtt" },
-        { value: "MQTT", label: i18n.t("PRODUCT_MANAGEMENT.PRODUCT_LIST.MQTTPROTOCOL") },
+        { value: "mqtt", label: "MQTT直连" },
+        { value: "MQTT", label: "MQTT网关" },
       ],
       authOptions: [
         { value: "1", label: "AccessToken " },
@@ -133,9 +133,10 @@ export default {
     handleBindPlugin(item) {
       this.pluginDialogVisible = true;
     },
-    handleBindPluginSubmit(pluginId) {
+    handleBindPluginSubmit(pluginId, pluginName) {
       console.log("handleBindPluginSubmit", pluginId)
       this.formData.plugin = pluginId;
+      this.formData.pluginName = pluginName;
     },
     handleClose() {
       this.dialogVisible = false;
