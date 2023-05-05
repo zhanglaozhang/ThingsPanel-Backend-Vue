@@ -244,20 +244,19 @@ export default defineComponent({
               let tree = data.data;
               if (user.email != "super@super.cn") {
                 tree.forEach(item => {
+                  console.log(item,'item');
                   if (item.children && item.name == "SystemManagement") {
                     item.children.forEach(child => {
-                        child.children.forEach(leaf => {
-                          if (leaf.name == "AddPermission"
-                              || leaf.name == "EditPermission"
-                              || leaf.name == "DeletePermission"
-                              || leaf.name == "DelUser"
-                              || leaf.name == "EditPassword"
-                              || leaf.name == "EditRole"
-                              || leaf.name == "DelRole"
+                      if (child.name == "AddPermission"
+                              || child.name == "EditPermission"
+                              || child.name == "DeletePermission"
+                              || child.name == "DelUser"
+                              || child.name == "EditPassword"
+                              || child.name == "EditRole"
+                              || child.name == "DelRole"
                           ) {
-                            leaf.disabled = true;
+                            child.disabled = true;
                           }
-                        })
                     })
                   }
                 })

@@ -85,8 +85,9 @@
   background: url("/media/bg/bg-5.jpg");
 }
 .d-flex {
-  background-size: cover;
   background: url('../../../assets/images/login/login-bj.png') no-repeat;
+  background-size: 100% 100%;
+  height: 100vh;
 }
 </style>
 <style scoped>

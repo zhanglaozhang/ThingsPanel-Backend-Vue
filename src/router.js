@@ -45,10 +45,13 @@ export const baseRoutes = [
         path: "/visual_display",
         name: "VisualDisplay",
         component: () => import("@/view/pages/visual/display/index"),
-    }
-
+    },
+    {
+        path: "/largeScreen",
+        name: "largeScreen",
+        component: () => import("../src/view/pages/largeScreen/index.vue"),
+    },
 ]
-
 
 Vue.use(VueRouter)
 
@@ -83,6 +86,5 @@ router.beforeEach((to, from, next) => {
         window.scrollTo(0, 0);
     }, 200);
 });
-
 
 export default router
